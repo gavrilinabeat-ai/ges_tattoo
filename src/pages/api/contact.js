@@ -1,8 +1,8 @@
 export const prerender = false;
 
 export async function POST({ request }) {
-  const token = import.meta.env.TELEGRAM_BOT_TOKEN;
-  const chatId = import.meta.env.TELEGRAM_CHAT_ID;
+  const token = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
 
   if (!token || !chatId) {
     return new Response(JSON.stringify({ ok: false, error: 'Telegram is not configured on the server.' }), {
