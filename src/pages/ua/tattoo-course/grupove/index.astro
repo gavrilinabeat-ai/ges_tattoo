@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: 'Групове навчання — Тату Майстер з Нуля',
+  description: 'Тариф «Груповий»: навчання під супроводом куратора і Катерини, з фідбеком щодня та гарантією 3 платних клієнтів під час навчання.',
+  provider: { '@type': 'EducationalOrganization', name: 'Sacred Ink Academy', sameAs: 'https://sacredinkacademy.com/ua/' },
+};
+
+const included = [
+  { icon: '👩‍🏫', title: 'Куратор + Катерина', text: 'тебе веде куратор і особисто я, контролюємо кожен крок до результату.' },
+  { icon: '💻', title: 'Zoom-розбори раз на два тижні', text: 'живі зустрічі, розбір робіт і технік, персональні завдання й напрям.' },
+  { icon: '✅', title: 'Перевірка домашніх вправ щодня', text: 'кожен день твої роботи дивляться і дають зворотний звʼязок. Не застрягаєш і не гадаєш.' },
+  { icon: '📦', title: 'Стартовий набір матеріалів у подарунок', text: 'усе для старту практики вже входить.' },
+  { icon: '🎯', title: 'Гарантія 3 платних клієнтів під час навчання', text: 'ти не просто вчишся, ти вже заробляєш ще під час курсу.' },
+  { icon: '🖤', title: 'Клуб тату-майстрів після навчання', text: 'спільнота для розвитку, підтримки й оточення таких самих як ти.' },
+];
+
+const format = [
+  'Доступ до всіх практичних модулів (1–10) на окремій платформі',
+  'Екосистема в Notion з матеріалами',
+  'Груповий чат потоку',
+  'Особистий кабінет для виконання завдань',
+  'Доступ до матеріалів 3 місяці після завершення',
+  'Офлайн-практика у Харкові + модуль «Перехід на людей»',
+];
+
+const modules = [
+  { n: '0', title: 'Введення та організація', topics: 'Аналіз точки А · побудова стратегії росту · як проходити навчання і обрати темп · постановка цілей продажів і масштабування · фінансове мислення, декомпозиція цілі' },
+  { n: '1', title: 'Безпека клієнта та майстра', topics: 'З чого починається робота · стерильність і дезінфекція · етапи стерилізації · хімічний розчин · протипоказання, робота на рубцях · алергія на тату · форс-мажори · догляд за тату після сеансу' },
+  { n: '2', title: 'Підготовка до сеансу', topics: 'Матеріали для роботи · які машинки існують · стилі тату · розробка ескізу · збираємо робоче місце · трансфер ручний і машинний · огляд принтера · великий трансфер' },
+  { n: '3', title: 'Введення в практику. Контуринг', topics: 'Постановка руки, моторика · класичний контур · повітряний контур · динамічний контур · летерінг' },
+  { n: '4', title: 'Техніка Дотворк', topics: 'Що таке дотворк · практика дотворк' },
+  { n: '5', title: 'Віпшейдинг', topics: 'Введення · практика · напилення' },
+  { n: '6', title: 'Магнуми. Тіні / покрас', topics: 'Вправи покрас · практика покрас · практика тіні · портрет реалізм · шерсть реалізм · додатково: грейвоші та сільвери, пропорції' },
+  { n: '7', title: 'Колір. Акварель / покрас', topics: 'Як працювати кольором · мікси фарб · практика колір · практика акварель' },
+  { n: '8', title: 'Мікрореалізм', topics: 'Чорно-білий мікрореалізм · кольоровий мікрореалізм' },
+  { n: '9', title: 'Контент', topics: 'Ціноутворення · створення і наповнення сторінки Instagram · мультиканальність · безкоштовні методи просування · канал з ідеями для контенту' },
+  { n: '10', title: 'Трафік та просування', topics: 'Кнопка «просувати» vs ads manager · запуск реклами через «просувати» · бізнес-менеджер і рекламний кабінет · створення БМ у Facebook · підбір аудиторії для будь-якої ніші · запуск реклами на трафік і взаємодію · аналіз і покращення результатів · правила успішного креативу · розбори чужих креативів' },
+];
+
+const path = [
+  'Аналізуєш точку А — розумієш що робила не так і на чому тримати фокус',
+  'Працюєш над мисленням, вчишся тримати фокус під час навчання',
+  'Проходиш усю теорію і всі нюанси роботи',
+  'Вчишся аналізувати й розробляти ескізи для клієнта',
+  'Ставиш руку з машинкою, починаєш практику',
+  'Поступово закріплюєш усі техніки',
+  'Упаковуєш Instagram, отримуєш ідеї контенту',
+  'Опановуєш таргет для пошуку клієнтів',
+  'Переходиш до складніших робіт: колір і мікрореалізм',
+  'Шукаєш перших моделей і працюєш на них',
+  'Отримуєш стратегію як рухатись далі',
+];
+---
+<BaseLayout
+  title="Групове навчання — тариф «Груповий» | Sacred Ink Academy"
+  description="Тариф «Груповий»: навчання під супроводом куратора і Катерини, Zoom-розбори, щоденний фідбек і гарантія 3 платних клієнтів під час навчання."
+  path="/ua/tattoo-course/grupove/"
+  jsonLd={jsonLd}
+>
+  <section class="section page-hero">
+    <div class="container">
+      <nav class="breadcrumbs"><a href="/ua/">Головна</a><span>/</span><a href="/ua/tattoo-course/">Навчання</a><span>/</span><span>Групове навчання</span></nav>
+      <span class="eyebrow">Тариф «Груповий» — з куратором і Катериною</span>
+      <h1 style="margin-top:16px;">Групове навчання</h1>
+      <p class="hero-sub">Для тих, хто хоче стати майстром не сам, а під супроводом — з підтримкою, фідбеком і гарантією результату.</p>
+      <p style="margin-top:12px; opacity:0.7; font-size:14px; font-weight:600;">Тривалість: 2 місяці</p>
+      <div class="hero-actions">
+        <a href="/ua/contact/" class="btn btn-primary">Хочу в групу</a>
+        <a href="/ua/tattoo-course/" class="btn btn-ghost">← Усі формати навчання</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <span class="section-index">[1]</span>
+      <h2 style="margin-top:12px;">Що входить</h2>
+      <div style="margin-top:28px; display:flex; flex-direction:column; gap:22px;">
+        {included.map((it) => (
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <span style="font-size:26px; line-height:1;">{it.icon}</span>
+            <div>
+              <div style="font-weight:700; font-size:15px;">{it.title}</div>
+              <p style="margin-top:4px; opacity:0.75; font-size:15px; line-height:1.55;">{it.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="section-index">[2]</span>
+      <h2 style="margin-top:12px;">Формат</h2>
+      <ul style="margin-top:26px; padding-left:20px; display:flex; flex-direction:column; gap:10px; max-width:70ch;">
+        {format.map((f) => (
+          <li style="font-size:15px; opacity:0.85; line-height:1.5;">{f}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="program">
+    <div class="container">
+      <span class="section-index">[3]</span>
+      <h2 style="margin-top:12px;">Повна програма</h2>
+      <div style="margin-top:32px; display:flex; flex-direction:column; gap:28px;">
+        {modules.map((m) => (
+          <div style="border-top:1px solid rgba(15,3,2,.14); padding-top:20px;">
+            <div style="display:flex; align-items:baseline; gap:14px;">
+              <span style="font-size:13px; font-weight:800; opacity:0.4;">{m.n}</span>
+              <h3 style="margin:0; font-size:17px;">Модуль {m.n} — {m.title}</h3>
+            </div>
+            <p style="margin-top:10px; opacity:0.72; font-size:14px; line-height:1.6;">{m.topics}</p>
+          </div>
+        ))}
+      </div>
+      <p style="margin-top:24px; opacity:0.7; font-size:14px;">Додатково: модуль «Перехід на людей», подкасти, уроки з AI.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="section-index">[4]</span>
+      <h2 style="margin-top:12px;">Який шлях ти проходиш</h2>
+      <ol style="margin-top:28px; padding-left:20px; display:flex; flex-direction:column; gap:10px; max-width:70ch;">
+        {path.map((p) => (
+          <li style="font-size:15px; opacity:0.85; line-height:1.5;">{p}</li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section-black" id="result">
+    <div class="container">
+      <span class="section-index" style="opacity:0.5;">[5]</span>
+      <h2 style="margin-top:12px;">Результат</h2>
+      <p style="margin-top:20px; max-width:70ch; opacity:0.85; font-size:16px; line-height:1.7;">За 2 місяці ти проходиш шлях від першої лінії до перших платних клієнтів: опановуєш техніки, ставиш руку, упаковуєш Instagram, вчишся знаходити клієнтів — і виходиш не з дипломом, а з реальними роботами, першими грошима і спільнотою майстрів за спиною.</p>
+      <a href="/ua/contact/" class="btn btn-inverse" style="margin-top:28px;">Хочу в групу</a>
+    </div>
+  </section>
+</BaseLayout>

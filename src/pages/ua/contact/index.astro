@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Контакти — Sacred Ink Academy"
+  description="Зв'яжіться з Sacred Ink Academy: питання щодо навчання, соцмережі, форма зворотного зв'язку."
+  path="/ua/contact/"
+>
+  <section class="section page-hero">
+    <div class="container">
+      <nav class="breadcrumbs"><a href="/ua/">Головна</a><span>/</span><span>Контакти</span></nav>
+      <span class="eyebrow">Контакти</span>
+      <h1 style="margin-top:16px;">Контакти</h1>
+      <p class="hero-sub">Питання щодо навчання, формату чи вартості — напишіть нам, і ми відповімо якнайшвидше.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container two-col">
+      <div>
+        <h2 style="font-size:20px;">Анкета на навчання</h2>
+        <form class="contact-form" style="margin-top:20px;" id="contactForm">
+          <div class="form-field"><label for="c-name">Ім'я та прізвище</label><input type="text" id="c-name" name="name" required></div>
+          <div class="form-field"><label for="c-tg">Нік в телеграм</label><input type="text" id="c-tg" name="telegram" placeholder="@nickname" required></div>
+          <div class="form-field"><label for="c-ig">Нік в інстаграм</label><input type="text" id="c-ig" name="instagram" placeholder="@nickname" required></div>
+          <div class="form-field">
+            <label>Чи є у тебе досвід в тату?</label>
+            <div style="display:flex; gap:20px; margin-top:4px;">
+              <label style="display:flex; align-items:center; gap:8px; font-size:15px; text-transform:none; font-weight:400; opacity:1;"><input type="radio" name="experience" value="Так" required style="width:16px; height:16px;"> Так</label>
+              <label style="display:flex; align-items:center; gap:8px; font-size:15px; text-transform:none; font-weight:400; opacity:1;"><input type="radio" name="experience" value="Ні" required style="width:16px; height:16px;"> Ні</label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="justify-content:center;">Надіслати</button>
+        </form>
+        <p id="contactFormNote" style="display:none; margin-top:16px; font-size:14px; padding:14px 18px; border:1px solid rgba(15,3,2,.16);"></p>
+      </div>
+
+      <div class="contact-info">
+        <div class="contact-info-item">
+          <span class="contact-info-label">Email</span>
+          <span class="contact-info-value"><a href="mailto:gavrilinabeat@gmail.com">gavrilinabeat@gmail.com</a></span>
+        </div>
+        <div class="contact-info-item">
+          <span class="contact-info-label">Telegram</span>
+          <span class="contact-info-value"><a href="https://t.me/ges_tattoo" target="_blank" rel="noopener">@ges_tattoo</a></span>
+        </div>
+        <div class="contact-info-item">
+          <span class="contact-info-label">Instagram</span>
+          <span class="contact-info-value"><a href="https://www.instagram.com/sacred.ink_academy/" target="_blank" rel="noopener">@sacred.ink_academy</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('contactForm')?.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const note = document.getElementById('contactFormNote');
+      const data = Object.fromEntries(new FormData(form));
+
+      if (submitBtn) submitBtn.disabled = true;
+      if (note) note.style.display = 'none';
+
+      try {
+        const res = await fetch('/api/contact/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) throw new Error('request failed');
+        if (note) {
+          note.textContent = 'Дякуємо за заявку! Ми зв’яжемось з тобою найближчим часом.';
+          note.style.borderColor = 'rgba(30,120,60,.4)';
+          note.style.display = 'block';
+        }
+        form.reset();
+      } catch (err) {
+        if (note) {
+          note.textContent = 'Не вдалося надіслати заявку. Спробуй ще раз трохи пізніше або напиши нам напряму в Telegram/Instagram.';
+          note.style.borderColor = 'rgba(180,40,30,.4)';
+          note.style.display = 'block';
+        }
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+      }
+    });
+  </script>
+</BaseLayout>

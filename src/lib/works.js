@@ -1,0 +1,21 @@
+// Real student/academy tattoo work — photos on real skin and studio flash pieces.
+export const works = [
+  { src: '/images/works/work-01.jpg', alt: 'Робота студентки · лотос на спині' },
+  { src: '/images/works/work-02.jpg', alt: 'Робота студентки · квіти та птах на руці' },
+  { src: '/images/works/work-03.jpg', alt: 'Робота студентки · зуби на мотузці' },
+  { src: '/images/works/work-04.jpg', alt: 'Робота студентки · лотос на плечі' },
+  { src: '/images/works/work-05.jpg', alt: 'Робота студентки · манекі-неко кольорове' },
+  { src: '/images/works/work-06.jpg', alt: 'Робота студентки · череп у рамці' },
+  { src: '/images/works/work-07.jpg', alt: 'Робота студентки · реалізм етикетки' },
+  { src: '/images/works/work-08.jpg', alt: 'Робота студентки · змія та птах' },
+  { src: '/images/works/work-09.jpg', alt: 'Робота студентки · кіт та квіти' },
+  { src: '/images/works/work-10.jpg', alt: 'Робота студентки · птах на гілці' },
+  { src: '/images/works/work-11.jpg', alt: 'Робота студентки · тигреня реалізм' },
+  { src: '/images/works/work-12.jpg', alt: 'Робота студентки · око кота реалізм' },
+  { src: '/images/works/work-13.jpg', alt: 'Робота студентки · лілії' },
+  { src: '/images/works/work-14.jpg', alt: 'Робота студентки · синій персонаж' },
+  { src: '/images/works/work-15.jpg', alt: 'Робота студентки · флеш-лист карти та метелик' },
+  { src: '/images/works/work-16.jpg', alt: 'Робота студентки · гіперреалізм маска' },
+  { src: '/images/works/work-17.jpg', alt: 'Робота студентки · шолом реалізм' },
+  { src: '/images/works/work-18.jpg', alt: 'Робота студентки · флеш-лист портрет та карти' },
+];

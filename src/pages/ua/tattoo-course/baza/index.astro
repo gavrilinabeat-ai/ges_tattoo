@@ -1,0 +1,241 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: 'База — Тату Майстер з Нуля',
+  description: 'Формат "База": опанувати тату з нуля у своєму темпі, з письмовим фідбеком по кожній роботі.',
+  provider: { '@type': 'EducationalOrganization', name: 'Sacred Ink Academy', sameAs: 'https://sacredinkacademy.com/ua/' },
+};
+
+const howItWorks = [
+  ['⏱ Навчання', '2 місяці'],
+  ['📂 Доступ до матеріалів', '3 місяці'],
+  ['✅ Здача домашніх завдань', '2 місяці'],
+  ['💬 Формат зворотного зв’язку', 'Письмовий/відео фідбек по роботах'],
+  ['🎥 Зідзвони', 'Без зідзвонів'],
+];
+
+const blocks = [
+  {
+    n: '01',
+    icon: '🔬',
+    title: 'Теорія. Перш ніж торкнутись машинки',
+    intro: 'Тут ти розбираєшся в усьому, що має знати майстер до першого сеансу:',
+    items: [
+      'Будова шкіри — чому це критично важливо для результату',
+      'Стерильність та дезінфекція — як не нашкодити клієнту',
+      'Алергії та протипоказання — хто не може робити тату і чому',
+      'Форс-мажори — що робити, якщо щось пішло не так',
+      'Друк та переведення ескізів — ручний трансфер, машинний трансфер, огляд принтера',
+    ],
+    quote: 'Перш ніж взяти машинку — ти вже розумієш, що, як і чому.',
+  },
+  {
+    n: '02',
+    icon: '⚙️',
+    title: 'Підготовка до практики',
+    items: [
+      'Які тату-машинки існують і яку обрати для старту',
+      'Налаштування машинки: виліт голки, вольтаж, картриджі',
+      'Збираємо робоче місце з нуля',
+      'Матеріали та витратники — що купувати, що не варто переплачувати',
+    ],
+  },
+  {
+    n: '03',
+    icon: '🎯',
+    title: 'Перший практичний урок. Перехід з теорії до практики',
+    intro: 'Вмикаємо тату-машинку, налаштовуємо, ставимо руку — і робиш перші вправи по відео.',
+    items: [],
+  },
+  {
+    n: '04',
+    icon: '✏️',
+    title: 'Техніки',
+    groups: [
+      { label: 'Контур (класичний, повітряний, динамічний)', items: ['Постановка руки та моторика', 'Написи / летерінг', 'Графіка, скетч, гравюра', 'Повітряний та динамічний контур'] },
+      { label: 'Віпшейдинг', items: ['Введення в техніку', 'Ескіз «квіти»', 'Ескіз «пташка»', 'Ескіз «тигреня»'] },
+      { label: 'Покрас магнумом', items: ['Як робити щільний рівний покрас', 'Практика покрасу та тіней'] },
+    ],
+  },
+  {
+    n: '05',
+    icon: '🧑‍🤝‍🧑',
+    title: 'Перехід на моделей',
+    items: [
+      'Як підготувати робоче місце для живої людини',
+      'Як працювати зі справжньою шкірою — чим вона відрізняється від штучної',
+      'Як знайти перших моделей і правильно з ними комунікувати',
+      'Що говорити клієнту до, під час і після сеансу',
+      'Догляд за тату — що пояснювати клієнту',
+    ],
+  },
+  {
+    n: '06',
+    icon: '📱',
+    title: 'Інстаграм і перші клієнти',
+    intro: 'Щоб після навчання ти не сиділа з думкою «а що тепер постити»:',
+    items: [
+      'Як упакувати шапку профілю',
+      'З чого почати сторінку майстра з нуля',
+      '30 ідей для контенту — готовий список',
+      'Як виглядати як майстер ще до перших клієнтів',
+    ],
+  },
+];
+
+const included = [
+  '📹 Відеоуроки з покроковими поясненнями',
+  '📝 Практичні домашні завдання після кожного блоку',
+  '💬 Письмовий фідбек від Катерини по кожній твоїй роботі',
+  '📂 Доступ до всіх матеріалів на 3 місяці',
+  '🗂 Екосистема в Notion з матеріалами та шаблонами',
+  '📋 30 ідей для контенту в подарунок',
+];
+
+const forWhom = [
+  'Ти давно хочеш в тату, але не було можливості, сумнів у собі',
+  'Ти самостійна і хочеш вчитися у власному темпі',
+  'Тобі важливий фідбек по роботах, але без постійних дзвінків і розкладу',
+  'Ти вже десь вчилась, але відчуваєш прогалини в теорії або техніці',
+  'Ти за кордоном і хочеш освоїти нову професію',
+];
+
+const faq = [
+  ['Чи потрібна машинка для старту?', 'На блоках теорії та підготовки — ні. Для практики — так, потрібна базова тату-машинка. Я підкажу яку обрати.'],
+  ['Чи підійде, якщо я ніколи не малювала?', 'Так. Більшість технік у БАЗІ не потребують художньої освіти — тільки терпіння і практика.'],
+  ['Коли я отримаю доступ?', 'Одразу після оплати.'],
+  ['Що якщо я не встигну здати домашки за 2 місяці?', 'Доступ до матеріалів залишається на 3 місяці — можеш дивитись і вчитись далі, але фідбек по роботах я даю протягом 2 місяців.'],
+];
+---
+<BaseLayout
+  title="База — формат навчання тату з нуля | Sacred Ink Academy"
+  description="Формат «База»: опануй тату з нуля у своєму темпі. Відеоуроки, домашні завдання, письмовий фідбек по кожній роботі, доступ на 3 місяці. 379€."
+  path="/ua/tattoo-course/baza/"
+  jsonLd={jsonLd}
+>
+  <section class="section page-hero">
+    <div class="container">
+      <nav class="breadcrumbs"><a href="/ua/">Головна</a><span>/</span><a href="/ua/tattoo-course/">Навчання</a><span>/</span><span>База</span></nav>
+      <span class="eyebrow">Формат навчання</span>
+      <h1 style="margin-top:16px;">База</h1>
+      <p class="hero-sub">Опанувати тату з нуля у своєму темпі. Формат для тих, хто хоче зайти в тату самостійно — але не наосліп: ти йдеш своїм ритмом, а Катерина бачить твої роботи й коригує, щоб ти не набивала помилок наодинці.</p>
+      <div class="hero-actions">
+        <a href="#price" class="btn btn-primary">Дізнатись вартість</a>
+        <a href="/ua/tattoo-course/" class="btn btn-ghost">← Усі формати навчання</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <span class="section-index">[1]</span>
+      <h2 style="margin-top:12px;">Як це працює</h2>
+      <div class="stat-row" style="margin-top:28px; border-top:1px solid rgba(15,3,2,.12); border-bottom:1px solid rgba(15,3,2,.12); grid-template-columns:1fr;">
+        {howItWorks.map(([label, value]) => (
+          <div class="stat-item" style="text-align:left; display:flex; justify-content:space-between; align-items:center; gap:16px; border-right:none !important; border-bottom:1px solid rgba(15,3,2,.1);">
+            <span style="font-size:14px; font-weight:600;">{label}</span>
+            <span style="font-size:15px; font-weight:800;">{value}</span>
+          </div>
+        ))}
+      </div>
+      <p class="content-block" style="margin-top:24px; opacity:0.75;">Практичні домашки можеш надсилати протягом 2 місяців — Катерина перевіряє кожну й відповідає. Без зідзвонів, тільки ти, матеріали і фідбек по твоїх роботах.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="program">
+    <div class="container">
+      <span class="section-index">[2]</span>
+      <h2 style="margin-top:12px;">Програма</h2>
+      <div style="margin-top:32px; display:flex; flex-direction:column; gap:36px;">
+        {blocks.map((b) => (
+          <div style="border-top:1px solid rgba(15,3,2,.14); padding-top:24px;">
+            <div style="display:flex; align-items:baseline; gap:14px;">
+              <span style="font-size:13px; font-weight:800; opacity:0.4;">{b.n}</span>
+              <h3 style="margin:0;">{b.icon} Блок {parseInt(b.n)} — {b.title}</h3>
+            </div>
+            {b.intro && <p style="margin-top:12px; opacity:0.75; font-size:15px;">{b.intro}</p>}
+            {b.items && b.items.length > 0 && (
+              <ul style="margin-top:14px; padding-left:20px; display:flex; flex-direction:column; gap:8px;">
+                {b.items.map((it) => <li style="font-size:15px; opacity:0.85;">{it}</li>)}
+              </ul>
+            )}
+            {b.groups && (
+              <div style="margin-top:14px; display:flex; flex-direction:column; gap:18px;">
+                {b.groups.map((g) => (
+                  <div>
+                    <div style="font-weight:700; font-size:14px; margin-bottom:8px;">{g.label}</div>
+                    <ul style="padding-left:20px; display:flex; flex-direction:column; gap:6px;">
+                      {g.items.map((it) => <li style="font-size:15px; opacity:0.85;">{it}</li>)}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            )}
+            {b.quote && <p style="margin-top:14px; font-style:italic; opacity:0.6; font-size:14px;">« {b.quote} »</p>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="section-index">[3]</span>
+      <h2 style="margin-top:12px;">Що ти отримуєш у форматі База</h2>
+      <ul class="testdrive-checks" style="margin-top:26px; max-width:640px;">
+        {included.map((it) => (
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9.5l4 4 8-8" stroke="currentColor" stroke-width="1.6"/></svg> {it}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="section-index">[4]</span>
+      <h2 style="margin-top:12px;">Для кого База</h2>
+      <div class="for-whom-grid" style="margin-top:28px;">
+        {forWhom.map((t, i) => (
+          <div class="fw-card"><span class="fw-num">{String(i + 1).padStart(2, '0')}</span><span class="fw-text">{t}</span></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-black" id="price">
+    <div class="container" style="text-align:center;">
+      <span class="section-index" style="opacity:0.5;">[5]</span>
+      <h2 style="margin-top:12px;">Вартість</h2>
+      <div style="margin-top:24px; font-size:clamp(36px,6vw,56px); font-weight:800;">379€</div>
+      <div style="opacity:0.6; font-size:14px; margin-top:4px;">приблизно 18 960 грн</div>
+      <p style="margin-top:20px; max-width:48ch; margin-left:auto; margin-right:auto; opacity:0.8;">Оплата повністю або частинами через Монобанк на 6–12 місяців без відсотків — це ≈30€ (1140 грн) на місяць.</p>
+      <a href="/ua/contact/" class="btn btn-inverse" style="margin-top:28px;">Записатись на «База»</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="section-index">[6]</span>
+      <h2 style="margin-top:12px;">Часті запитання</h2>
+      <div class="faq-list" style="margin-top:32px;">
+        {faq.map(([q, a]) => (
+          <div class="faq-item">
+            <button class="faq-q"><span>{q}</span><span class="plus"></span></button>
+            <div class="faq-a"><div class="faq-a-inner">{a}</div></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt final-cta">
+    <div class="container">
+      <span class="eyebrow">Sacred Ink Academy</span>
+      <h2 style="margin-top:16px; font-size:clamp(22px,3vw,32px); text-transform:none;">Є питання? Пиши — відповім.</h2>
+      <a href="/ua/contact/" class="btn btn-primary">Написати Катерині</a>
+    </div>
+  </section>
+</BaseLayout>

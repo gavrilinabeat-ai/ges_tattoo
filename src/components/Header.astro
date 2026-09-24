@@ -1,0 +1,76 @@
+---
+const nav = [
+  { href: '/ua/about/', label: 'Про академію' },
+  { href: '/ua/tattoo-course/', label: 'Навчання' },
+  { href: '/ua/knowledge/', label: 'База знань' },
+  { href: '/ua/contact/', label: 'Контакти' },
+];
+---
+<header class="site-header">
+  <div class="container">
+    <a href="/ua/" class="brand" aria-label="Sacred Ink Academy — головна">
+      <img src="/assets/logo/wordmark-black.svg" alt="Sacred Ink Academy">
+    </a>
+
+    <nav class="nav-desktop" aria-label="Основна навігація">
+      {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+
+    <div class="header-right">
+      <div class="lang-toggle" aria-label="Вибір мови">
+        <a href="#" class="is-active">UA</a>
+        <span aria-hidden="true">/</span>
+        <a href="/en/">EN</a>
+      </div>
+      <a href="/ua/free-tattoo-course/" class="btn btn-primary header-cta">Спробувати безкоштовно</a>
+      <button class="burger-btn" id="burgerBtn" aria-label="Відкрити меню" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-top">
+    <a href="/ua/" class="brand"><img src="/assets/logo/wordmark-black.svg" alt="Sacred Ink Academy"></a>
+    <button class="burger-btn" id="burgerCloseBtn" aria-label="Закрити меню" aria-expanded="true">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu-body">
+    <div class="mm-group">
+      <a class="mm-link" href="/ua/">Головна</a>
+    </div>
+    <div class="mm-group">
+      <div class="mm-group-title">Про академію</div>
+      <div class="mm-sub">
+        <a class="mm-link" href="/ua/about/">Про Sacred Ink Academy</a>
+        <a class="mm-link" href="/ua/kateryna-yeromenko/">Катерина Єрьоменко</a>
+        <a class="mm-link" href="/ua/results/">Результати та відгуки</a>
+      </div>
+    </div>
+    <div class="mm-group">
+      <div class="mm-group-title">Навчання</div>
+      <div class="mm-sub">
+        <a class="mm-link" href="/ua/tattoo-course/">Тату Майстер з Нуля</a>
+        <a class="mm-link" href="/ua/free-tattoo-course/">5-денний безкоштовний тест-драйв</a>
+      </div>
+    </div>
+    <div class="mm-group">
+      <div class="mm-group-title">База знань</div>
+      <div class="mm-sub">
+        <a class="mm-link" href="/ua/knowledge/">Усі матеріали</a>
+      </div>
+    </div>
+    <div class="mm-group">
+      <a class="mm-link" href="/ua/contact/">Контакти</a>
+    </div>
+  </div>
+  <div class="mobile-menu-footer">
+    <div class="mm-lang">
+      <a href="#" class="is-active">UA</a>
+      <a href="/en/">EN</a>
+    </div>
+    <a href="/ua/free-tattoo-course/" class="btn btn-primary">Спробувати безкоштовно</a>
+  </div>
+</div>

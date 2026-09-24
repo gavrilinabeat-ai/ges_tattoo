@@ -1,0 +1,14 @@
+---
+// Horizontal scrolling gallery of student/academy tattoo work photos, with lightbox on click.
+export interface Props {
+  items: { src: string; alt: string }[];
+}
+const { items } = Astro.props;
+---
+<div class="works-scroller">
+  {items.map((w) => (
+    <button type="button" class="review-shot" data-lightbox-src={w.src} aria-label="Збільшити роботу">
+      <img src={w.src} alt={w.alt} loading="lazy">
+    </button>
+  ))}
+</div>

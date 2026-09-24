@@ -1,0 +1,49 @@
+---
+// Horizontal scrolling galleries for testimonials: screenshots row + video row.
+// Each row shows ~4 cards at once on desktop; rest reachable via arrow buttons.
+export interface Props {
+  images?: { src: string; alt: string }[];
+  videos?: { src: string; name: string }[];
+  heading?: string;
+  index?: string;
+}
+const { images = [], videos = [], heading = 'Відгуки', index } = Astro.props;
+---
+{images.length > 0 && (
+  <div class="reviews-block">
+    <div class="works-head">
+      <div>
+        {index && <span class="section-index">{index}</span>}
+        <h2 style="margin-top:12px;">{heading}</h2>
+      </div>
+      <div class="works-nav" data-scroller-nav>
+        <button type="button" data-works-prev aria-label="Попередні відгуки">←</button>
+        <button type="button" data-works-next aria-label="Наступні відгуки">→</button>
+      </div>
+    </div>
+    <div class="works-scroller reviews-scroller">
+      {images.map((img) => (
+        <button type="button" class="review-shot" data-lightbox-src={img.src} aria-label="Збільшити відгук">
+          <img src={img.src} alt={img.alt} loading="lazy">
+        </button>
+      ))}
+    </div>
+  </div>
+)}
+
+{videos.length > 0 && (
+  <div class="reviews-block" style="margin-top:40px;">
+    <div class="works-head">
+      <div><span class="eyebrow">Відеовідгуки</span></div>
+      <div class="works-nav" data-scroller-nav>
+        <button type="button" data-works-prev aria-label="Попередні відео">←</button>
+        <button type="button" data-works-next aria-label="Наступні відео">→</button>
+      </div>
+    </div>
+    <div class="works-scroller reviews-scroller">
+      {videos.map((v) => (
+        <video class="review-video" src={v.src} controls preload="metadata"></video>
+      ))}
+    </div>
+  </div>
+)}

@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import { getArticles } from '../../../../../lib/contentful.js';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+
+export async function getStaticPaths() {
+  try {
+    const articles = await getArticles();
+    return articles
+      .filter((a) => a.category)
+      .map((a) => ({
+        params: { category: a.category.slug, slug: a.slug },
+        props: { article: a },
+      }));
+  } catch {
+    return [];
+  }
+}
+
+const { article } = Astro.props;
+const bodyHtml = article.body ? documentToHtmlString(article.body) : '';
+
+function formatDate(iso) {
+  return new Date(iso).toLocaleDateString('uk-UA', { day: '2-digit', month: '2-digit', year: 'numeric' });
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: article.title,
+  author: { '@type': 'Person', name: article.author },
+  publisher: { '@type': 'EducationalOrganization', name: 'Sacred Ink Academy' },
+  datePublished: article.publishedDate,
+  dateModified: article.updatedDate,
+  mainEntityOfPage: `https://sacredinkacademy.com/ua/knowledge/${article.category.slug}/${article.slug}/`,
+};
+---
+<BaseLayout
+  title={article.seoTitle}
+  description={article.seoDescription}
+  path={`/ua/knowledge/${article.category.slug}/${article.slug}/`}
+  jsonLd={jsonLd}
+>
+  <section class="section page-hero" style="padding-bottom:0;">
+    <div class="container article-wrap">
+      <nav class="breadcrumbs">
+        <a href="/ua/">Головна</a><span>/</span>
+        <a href="/ua/knowledge/">База знань</a><span>/</span>
+        <a href={`/ua/knowledge/${article.category.slug}/`}>{article.category.title}</a><span>/</span>
+        <span>{article.title}</span>
+      </nav>
+      <span class="eyebrow">{article.category.title}</span>
+      <h1 style="margin-top:16px; text-transform:none; font-size:clamp(28px,4vw,42px);">{article.title}</h1>
+      <div class="article-meta">
+        <span class="article-author-pic"></span>
+        <span>{article.author} · Опубліковано {formatDate(article.publishedDate)} · Оновлено {formatDate(article.updatedDate)}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:32px;">
+    <div class="container article-wrap">
+      {article.excerpt && <p style="font-size:18px; font-weight:600; line-height:1.6;">{article.excerpt}</p>}
+
+      {article.coverImageUrl && (
+        <img src={article.coverImageUrl} alt={article.title} style="width:100%; margin-top:24px;" />
+      )}
+
+      <div class="article-body" set:html={bodyHtml} />
+
+      <div style="margin-top:44px; padding:28px; border:1px solid rgba(15,3,2,0.14); display:flex; gap:20px; align-items:center; flex-wrap:wrap; justify-content:space-between;">
+        <div>
+          <div style="font-weight:700; text-transform:uppercase; font-size:14px;">{article.author}</div>
+          <div style="font-size:13px; opacity:0.6; margin-top:4px;">Sacred Ink Academy</div>
+        </div>
+        <a href="/ua/free-tattoo-course/" class="btn btn-primary">Спробувати 5 днів безкоштовно</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

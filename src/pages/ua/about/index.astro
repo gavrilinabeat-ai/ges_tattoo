@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import WorksGallery from '../../../components/WorksGallery.astro';
+
+const academyPhotos = [
+  { src: '/images/academy/academy-01.jpeg', alt: 'Катерина Єрьоменко з ученицею' },
+  { src: '/images/academy/academy-02.jpeg', alt: 'Катерина Єрьоменко з ученицею та сертифікатом' },
+  { src: '/images/academy/academy-03.jpeg', alt: 'Катерина Єрьоменко з ученицею' },
+  { src: '/images/academy/academy-04.jpeg', alt: 'Катерина Єрьоменко з ученицею' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Головна', item: 'https://sacredinkacademy.com/ua/' },
+    { '@type': 'ListItem', position: 2, name: 'Про академію', item: 'https://sacredinkacademy.com/ua/about/' },
+  ],
+};
+
+const beliefs = [
+  { title: 'Спочатку ремесло', text: 'Ми не про швидкі партаки заради грошей. Ми про чистий контур, техніку й повагу до чужої шкіри. Саме за якістю до тебе повертаються — і приводять інших.' },
+  { title: 'Людина, а не потік', text: 'Ми не набиваємо групи заради цифр. Ведемо кожного до результату — з фідбеком, підтримкою і чесною розмовою. Краще менше учнів, але кожен реально дійде.' },
+  { title: 'Чесно, без казок', text: 'Ми не обіцяємо «майстер за тиждень». Ми даємо систему й ідемо поруч. Результат приходить до тих, хто працює — і ми не боїмось про це сказати прямо.' },
+  { title: 'Тату — це ритуал, а не конвеєр', text: 'За кожною роботою ми вчимо бачити людину та її історію. Майстер Sacred Ink — це не просто руки. Це той, хто розуміє, навіщо людина прийшла.' },
+  { title: 'Свобода — це і є ціль', text: 'Ми вчимо не лише бити тату, а будувати справу: свій графік, свій дохід і можливість працювати хоч із дому, хоч з іншого кінця світу.' },
+];
+
+const forWhom = [
+  'Для тих, хто з нуля й хоче змінити життя — опанувати справу, яка і годує, і надихає',
+  'Для тих, хто вже пробував сам чи потрапив на невдале навчання — і застряг без системи й упевненості',
+  'Для діючих майстрів, які хочуть вищі чеки, стабільний потік клієнтів і сильнішу техніку',
+  'Для тих, хто живе за кордоном і шукає професію, не прив’язану до місця',
+  'Для майстрів б’юті й перманенту, які хочуть додати тату — і до послуг, і до доходу',
+];
+---
+<BaseLayout
+  title="Про Sacred Ink Academy — чому саме «Sacred Ink»"
+  description="Sacred Ink Academy — філософія, місія та принципи навчання онлайн-школи татуювання: чому чорнило для нас священне і для кого створена академія."
+  path="/ua/about/"
+  jsonLd={jsonLd}
+>
+  <section class="section page-hero" style="padding-bottom:clamp(24px,3vw,36px);">
+    <div class="container" style="display:flex; align-items:flex-start; gap:28px;">
+      <img src="/assets/logo/icon-cream.svg" alt="Sacred Ink Academy" style="width:96px; height:96px; flex:0 0 96px; margin-top:4px;">
+      <div>
+        <nav class="breadcrumbs"><a href="/ua/">Головна</a><span>/</span><span>Про академію</span></nav>
+        <span class="eyebrow">Sacred Ink Academy</span>
+        <h1 style="margin-top:16px; font-size:clamp(26px,3.4vw,40px);">Чому саме «Sacred Ink»</h1>
+        <p class="hero-sub">Sacred Ink — священне чорнило. Назву ми взяли не тому, що гарно звучить. А тому, що вона про суть.</p>
+        <div class="content-block" style="margin-top:20px;">
+          <p>Тату — це не картинка на шкірі. Це слід, який лишається назавжди. За кожним малюнком стоїть людина: її біль, її перемога, те, що вона хоче не забути, момент, з якого почалось нове життя. До майстра приходять не «за татухою» — приходять зберегти щось важливе на все життя.</p>
+          <p>Тому чорнило для нас справді священне. Через нього людина проживає щось своє. А майстер — той, хто допомагає це зафіксувати назавжди.</p>
+          <p>Ми не вчимо «наносити малюнки». Ми вчимо бути майстром, якому довіряють найдорожче — своє тіло і свою історію.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="section-index">[1]</span>
+      <h2 style="margin-top:12px;">Наша місія</h2>
+      <div class="content-block" style="margin-top:20px;">
+        <p>Дати людині професію, яка справді змінює життя — і навчити робити її так, щоб не соромно було ні перед ремеслом, ні перед клієнтом.</p>
+        <p>Ми хочемо, щоб більше людей нарешті дозволили собі творчу, вільну справу, яка ще й добре платить. Щоб мама в декреті, дівчина за кордоном, людина, яка вигоряє на нелюбимій роботі — могла стати майстром і жити з того, що любить.</p>
+        <p>І щоб робила це якісно, безпечно й упевнено. А не «якось вийшло».</p>
+      </div>
+      <div style="margin-top:32px;"><WorksGallery items={academyPhotos} /></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="section-index">[2]</span>
+      <h2 style="margin-top:12px;">У що ми віримо</h2>
+      <div style="margin-top:32px; display:flex; flex-direction:column; gap:28px;">
+        {beliefs.map((b) => (
+          <div style="border-top:1px solid rgba(15,3,2,.14); padding-top:22px;">
+            <h3 style="font-size:18px;">{b.title}</h3>
+            <p style="margin-top:10px; opacity:0.78; font-size:15px; line-height:1.65; max-width:70ch;">{b.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="section-index">[3]</span>
+      <h2 style="margin-top:12px;">Для кого ця академія</h2>
+      <div class="for-whom-grid" style="margin-top:28px;">
+        {forWhom.map((t, i) => (
+          <div class="fw-card"><span class="fw-num">{String(i + 1).padStart(2, '0')}</span><span class="fw-text">{t}</span></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="section-index">[4]</span>
+      <h2 style="margin-top:12px;">Чим ми відрізняємось</h2>
+      <div class="content-block" style="margin-top:20px;">
+        <p>Ми не «ще один курс тату». Ми ціла екосистема, де ти отримуєш одразу все: техніку, упаковку Instagram, уміння знаходити клієнтів, куратора поруч і спільноту таких самих, як ти.</p>
+        <p>Бо майстер без клієнтів — це просто хобі. А майстер із системою — це професія і свобода.</p>
+      </div>
+      <p style="margin-top:28px; font-size:clamp(20px,2.6vw,28px); font-weight:700;">Sacred Ink Academy — місце, де хобі стає справою життя. 🖤</p>
+    </div>
+  </section>
+
+  <section class="section section-black final-cta">
+    <div class="container">
+      <span class="eyebrow" style="opacity:0.7;">Sacred Ink Academy</span>
+      <h2 style="margin-top:16px;">Готова спробувати перший крок?</h2>
+      <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:32px;">
+        <a href="/ua/free-tattoo-course/" class="btn btn-inverse">Спробувати 5 днів безкоштовно</a>
+        <a href="/ua/tattoo-course/" class="btn btn-ghost-inverse">Дізнатися про навчання</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

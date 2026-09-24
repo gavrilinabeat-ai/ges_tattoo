@@ -1,0 +1,95 @@
+/* Generic inner-page styles, shared across About / Kateryna / Results / Course / Knowledge / Contact */
+
+.page-hero { padding-top: clamp(28px,5vw,48px); padding-bottom: clamp(48px,7vw,80px); }
+.page-hero h1 { max-width: 22ch; }
+.page-hero .hero-sub { margin-top: 20px; }
+
+.content-block { max-width: 74ch; }
+.content-block + .content-block { margin-top: 28px; }
+.content-block p { font-size: 16px; line-height: 1.7; opacity: 0.82; }
+.content-block p + p { margin-top: 16px; }
+
+.fact-strip { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 32px; }
+.fact-strip div { min-width: 110px; }
+
+.two-col { display: grid; gap: 40px; grid-template-columns: 1fr; align-items: start; }
+@media (min-width: 900px) { .two-col { grid-template-columns: 1fr 1fr; } }
+.two-col.reverse { direction: rtl; }
+.two-col.reverse > * { direction: ltr; }
+
+.tag-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.tag { border: 1px solid rgba(15,3,2,0.25); padding: 6px 14px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
+
+/* Module list (course curriculum) */
+.module-list { list-style: none; margin: 32px 0 0; padding: 0; border-top: 1px solid rgba(15,3,2,0.14); }
+.module-item { border-bottom: 1px solid rgba(15,3,2,0.14); padding: 22px 0; display: grid; grid-template-columns: 48px 1fr; gap: 18px; align-items: baseline; }
+.module-num { font-size: 13px; font-weight: 700; opacity: 0.45; }
+.module-title { font-size: 17px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.01em; }
+.module-desc { font-size: 14px; opacity: 0.6; margin-top: 6px; grid-column: 2; max-width: 56ch; }
+
+/* Format cards (variants of learning, no prices) */
+.format-grid { display: grid; gap: 20px; grid-template-columns: 1fr; margin-top: 32px; }
+@media (min-width: 640px) { .format-grid { grid-template-columns: repeat(2,1fr); } }
+@media (min-width: 1080px) { .format-grid { grid-template-columns: repeat(4,1fr); } }
+.format-card { position: relative; min-width: 0; border: 1px solid rgba(15,3,2,0.16); background: var(--blue-gray); padding: 30px 26px; display: flex; flex-direction: column; gap: 18px; }
+.format-card.is-silver {
+  background: var(--paper);
+  border: 5px solid;
+  border-image: linear-gradient(135deg, #ffffff 0%, #9ea6ad 18%, #f4f6f7 32%, #7c848b 50%, #f4f6f7 68%, #9ea6ad 82%, #ffffff 100%) 1;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.5) inset, 0 6px 18px rgba(15,3,2,.18);
+}
+.format-sticker {
+  position: absolute; top: -12px; right: -10px; z-index: 1;
+  background: var(--ink); color: var(--paper);
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em;
+  padding: 8px 14px; border-radius: 999px; transform: rotate(4deg);
+  box-shadow: 0 4px 10px rgba(0,0,0,.25);
+  white-space: nowrap;
+}
+.format-name { font-size: 18px; font-weight: 700; text-transform: uppercase; }
+.format-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px; opacity: 0.85; flex: 1; }
+.format-list li { display: flex; gap: 10px; align-items: flex-start; }
+
+/* Case study card (results page) */
+.case-card { border: 1px solid rgba(15,3,2,0.14); display: grid; grid-template-columns: 1fr; }
+@media (min-width: 820px) { .case-card { grid-template-columns: 1fr 1fr; } }
+.case-body { padding: 30px clamp(22px,3vw,40px); display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.case-meta { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.5; font-weight: 700; }
+.case-list { display: flex; flex-direction: column; gap: 26px; margin-top: 40px; }
+
+/* Knowledge base */
+.kb-filters { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+.kb-filter { border: 1px solid rgba(15,3,2,0.25); padding: 8px 16px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; background: none; cursor: pointer; font-family: var(--font); }
+.kb-filter.is-active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.kb-search { margin-top: 24px; max-width: 420px; }
+.kb-search input { width: 100%; padding: 14px 16px; border: 1px solid rgba(15,3,2,0.25); font-family: var(--font); font-size: 14px; }
+
+/* Article template */
+.article-wrap { max-width: 760px; }
+.article-meta { display: flex; align-items: center; gap: 14px; font-size: 13px; opacity: 0.6; margin-top: 18px; }
+.article-author-pic { width: 34px; height: 34px; border-radius: 50%; background: var(--blue-gray); flex: none; }
+.toc { border: 1px solid rgba(15,3,2,0.14); padding: 20px 24px; margin: 32px 0; }
+.toc-title { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; opacity: 0.6; margin-bottom: 12px; }
+.toc ol { margin: 0; padding-left: 18px; font-size: 14px; display: flex; flex-direction: column; gap: 8px; }
+.article-body h2 { text-transform: none; font-size: 24px; margin-top: 40px; margin-bottom: 14px; }
+.article-body p { font-size: 16px; line-height: 1.75; opacity: 0.85; margin-bottom: 16px; }
+
+/* Contact form */
+.contact-form { display: flex; flex-direction: column; gap: 16px; max-width: 480px; }
+.form-field label { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; opacity: 0.6; margin-bottom: 8px; }
+.form-field input, .form-field textarea {
+  width: 100%; padding: 14px 16px; border: 1px solid rgba(15,3,2,0.25); font-family: var(--font); font-size: 15px; background: var(--paper); color: var(--ink);
+}
+.form-field textarea { min-height: 140px; resize: vertical; }
+
+.contact-info { display: flex; flex-direction: column; gap: 22px; }
+.contact-info-item { display: flex; flex-direction: column; gap: 4px; }
+.contact-info-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.5; font-weight: 700; }
+.contact-info-value { font-size: 16px; font-weight: 600; }
+.contact-info-value a { text-decoration: none; }
+.contact-info-value a:hover { text-decoration: underline; }
+
+/* Legal pages */
+.legal-body h2 { text-transform: none; font-size: 20px; margin-top: 36px; margin-bottom: 10px; }
+.legal-body p, .legal-body li { font-size: 15px; line-height: 1.75; opacity: 0.82; }
+.legal-body ul { padding-left: 20px; }

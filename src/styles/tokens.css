@@ -1,0 +1,168 @@
+/* Sacred Ink Academy — design tokens */
+:root {
+  /* palette */
+  --white: #FFFFFF;
+  --blue-gray: #BDC3CC;
+  --blue-gray-dim: #E7EAED;
+  --sand: #EAE3D1;
+  --crimson: #410014;
+  --black: #0F0302;
+
+  --ink: var(--black);
+  --paper: var(--white);
+  --accent: var(--blue-gray);
+  --surface-alt: var(--blue-gray-dim);
+  --surface-warm: var(--sand);
+
+  /* type */
+  --font: 'Onest', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* spacing */
+  --gutter: clamp(20px, 5vw, 64px);
+  --section-y: clamp(64px, 10vw, 140px);
+  --radius: 2px;
+
+  /* motion */
+  --ease: cubic-bezier(.4,0,.2,1);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink);
+  opacity: 0.55;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-index {
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  opacity: 0.4;
+  font-weight: 600;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+h1 { font-size: clamp(32px, 5vw, 60px); }
+h2 { font-size: clamp(28px, 4vw, 44px); }
+h3 { font-size: clamp(20px, 2.4vw, 26px); text-transform: none; }
+
+p { margin: 0; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 16px 28px;
+  border-radius: var(--radius);
+  border: 1px solid var(--ink);
+  cursor: pointer;
+  transition: background var(--ease) .2s, color var(--ease) .2s, border-color var(--ease) .2s, transform var(--ease) .15s;
+  white-space: nowrap;
+}
+.btn:active { transform: scale(0.98); }
+
+.btn-primary { background: var(--ink); color: var(--paper); }
+.btn-primary:hover { background: transparent; color: var(--ink); }
+
+.btn-inverse { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.btn-inverse:hover { background: transparent; color: var(--paper); }
+
+.btn-ghost { background: transparent; color: var(--ink); border-color: currentColor; }
+.btn-ghost:hover { background: var(--ink); color: var(--paper); }
+
+.btn-ghost-inverse { background: transparent; color: var(--paper); border-color: var(--paper); }
+.btn-ghost-inverse:hover { background: var(--paper); color: var(--ink); }
+
+.btn svg { width: 14px; height: 14px; flex: none; }
+
+.section {
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
+  position: relative;
+}
+.section-black { background: var(--ink); color: var(--paper); }
+.section-alt { background: var(--surface-alt); }
+.section-warm { background: var(--surface-warm); }
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: clamp(32px, 5vw, 56px);
+  flex-wrap: wrap;
+}
+
+.placeholder-media {
+  background: repeating-linear-gradient(135deg, rgba(15,3,2,0.06), rgba(15,3,2,0.06) 10px, rgba(15,3,2,0.02) 10px, rgba(15,3,2,0.02) 20px);
+  border: 1px solid rgba(15,3,2,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: rgba(15,3,2,0.45);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 20px;
+  min-height: 220px;
+}
+.section-black .placeholder-media,
+.on-dark .placeholder-media {
+  background: repeating-linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.08) 10px, rgba(255,255,255,0.02) 10px, rgba(255,255,255,0.02) 20px);
+  border-color: rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.5);
+}
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+[hidden] { display: none !important; }

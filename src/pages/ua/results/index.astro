@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ReviewsGallery from '../../../components/ReviewsGallery.astro';
+import WorksGallery from '../../../components/WorksGallery.astro';
+import { videoReviews, imageReviews } from '../../../lib/reviews.js';
+import { works } from '../../../lib/works.js';
+
+const chicagoCarousel = Array.from({ length: 10 }, (_, i) => ({
+  src: `/images/results/chicago/carousel-${String(i + 1).padStart(2, '0')}.jpeg`,
+  alt: 'З нуля до своєї студії у Чикаго — крок навчання',
+}));
+
+const vikaCarousel = Array.from({ length: 9 }, (_, i) => ({
+  src: `/images/results/vika/carousel-${String(i + 1).padStart(2, '0')}.jpeg`,
+  alt: 'Віка — з нуля до 710 000 грн за рік — крок історії',
+}));
+---
+<BaseLayout
+  title="Результати студентів Sacred Ink — відгуки та кейси"
+  description="Реальні результати та відгуки студенток Sacred Ink Academy: роботи, до/після та історії від старту до перших клієнтів."
+  path="/ua/results/"
+>
+  <section class="section page-hero">
+    <div class="container">
+      <nav class="breadcrumbs"><a href="/ua/">Головна</a><span>/</span><span>Результати та відгуки</span></nav>
+      <span class="eyebrow">Результати студентів</span>
+      <h1 style="margin-top:16px;">Результати студентів<br>Sacred Ink</h1>
+      <p class="hero-sub">Реальні історії — від старту без досвіду до перших платних клієнтів.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="case-body" style="max-width:820px;">
+        <span class="case-meta">Кейс учениці · за рік</span>
+        <h3>Віка — з нуля до 710 000 грн за рік</h3>
+        <p style="opacity:0.75; font-size:15px; line-height:1.6;"><b>Точка А.</b> Рік тому Віка працювала в зовсім іншій сфері, у маленькому місті. Тату було мрією — але страхи здавалися сильнішими: «а раптом не вийде?», «як залишити стабільну роботу?», «звідки візьмуться клієнти?». Перші роботи не виходили. Але вона не зупинилась.</p>
+        <p style="opacity:0.75; font-size:15px; line-height:1.6; margin-top:10px;"><b>Що вона робила:</b></p>
+        <ul style="margin:0; padding-left:20px; display:flex; flex-direction:column; gap:6px; opacity:0.75; font-size:15px; line-height:1.5;">
+          <li>Не звільнялась одразу — поєднувала роботу і навчання, давала собі час набити руку</li>
+          <li>Працювала до результату: коли не виходило — переробляла, шукала рішення, а не виправдання</li>
+          <li>Будувала портфоліо крок за кроком — від простих ескізів до складних робіт</li>
+          <li>Вела Instagram системно — не хаос, а чіткі кроки: що показувати і як залучати клієнтів</li>
+        </ul>
+        <p style="opacity:0.75; font-size:15px; line-height:1.6; margin-top:10px;"><b>Переломний момент.</b> Віка зрозуміла: страх залишитись без грошей менший за страх не спробувати. Вона звільнилась. І сталося те, чого боялась найменше — клієнти зʼявились.</p>
+        <p style="opacity:0.75; font-size:15px; line-height:1.6;"><b>Точка Б.</b> За рік — 710 000 грн. Це ~59 000 грн на місяць. З нуля. З маленького міста. Без звʼязків у тату-індустрії. З мого онлайн-навчання і моєю підтримкою.</p>
+        <p style="font-style:italic; opacity:0.85; font-size:15px; line-height:1.6; border-left:2px solid rgba(15,3,2,.25); padding-left:14px;">«Стабільність — це не фіксована зарплата. Стабільність — це впевненість у своїх навичках.»</p>
+        <p style="font-size:15px; line-height:1.6; font-weight:600;">Віка почала, коли була готова на 30%. Не на 100%. На 30% — і саме тому вона вже там, а не «колись потім».</p>
+      </div>
+      <div style="margin-top:32px;"><WorksGallery items={vikaCarousel} /></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <span class="case-meta">Кейс учениці</span>
+      <h3 style="margin-top:10px; font-size:clamp(20px,2.6vw,28px);">З нуля до своєї студії у Чикаго</h3>
+      <div style="margin-top:24px;"><WorksGallery items={chicagoCarousel} /></div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="section-index">[2]</span>
+      <h2 style="margin-top:12px;">Галерея робіт студенток</h2>
+      <div style="margin-top:28px;"><WorksGallery items={works} /></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <ReviewsGallery heading="Відгуки" index="[3]" images={imageReviews} videos={videoReviews} />
+    </div>
+  </section>
+
+  <section class="section section-black final-cta">
+    <div class="container">
+      <span class="eyebrow" style="opacity:0.7;">Sacred Ink Academy</span>
+      <h2 style="margin-top:16px;">Стань наступною історією успіху</h2>
+      <a href="/ua/free-tattoo-course/" class="btn btn-inverse">Спробувати 5 днів безкоштовно</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Sacred Ink Astro",
+      "runtimeExecutable": "/bin/bash",
+      "runtimeArgs": ["-c", "export PATH=\"$HOME/.local/node/bin:$PATH\" && cd /Users/ekaterinaeremenko/sacred-ink-astro && exec npx astro dev --port 4400"],
+      "port": 4400,
+      "url": "http://localhost:4400/ua/"
+    }
+  ]
+}

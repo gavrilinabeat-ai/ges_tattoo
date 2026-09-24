@@ -1,0 +1,249 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ReviewsGallery from '../../components/ReviewsGallery.astro';
+import WorksGallery from '../../components/WorksGallery.astro';
+import { videoReviews, imageReviews } from '../../lib/reviews.js';
+import { works } from '../../lib/works.js';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationalOrganization',
+  name: 'Sacred Ink Academy',
+  url: 'https://sacredinkacademy.com/ua/',
+  logo: 'https://sacredinkacademy.com/assets/logo/icon-black.svg',
+};
+---
+<BaseLayout
+  title="Sacred Ink Academy — онлайн-школа татуювання для тих, хто хоче опанувати професію з нуля"
+  description="Sacred Ink Academy — онлайн-школа татуювання. Курс «Тату Майстер з Нуля»: 11 модулів, 2 місяці, від бази до перших клієнтів. 100+ випускниць у 6 країнах. Спробуй 5 днів безкоштовно."
+  path="/ua/"
+  jsonLd={jsonLd}
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-kicker">
+          <span class="eyebrow">Tattoo education · for a new generation</span>
+        </div>
+        <h1>Онлайн-школа татуювання<br>для тих, хто хоче опанувати<br>професію з нуля</h1>
+        <p class="hero-sub">Sacred Ink Academy веде тебе від першої лінії до перших платних клієнтів — системно, з практикою і підтримкою на кожному етапі.</p>
+        <div class="hero-actions">
+          <a href="/ua/free-tattoo-course/" class="btn btn-primary">Спробувати 5 днів безкоштовно</a>
+          <a href="/ua/tattoo-course/" class="btn btn-ghost">Дізнатися про навчання</a>
+        </div>
+        <div class="hero-proof">
+          <span class="hero-avatars">
+            <img src="/images/avatars/avatar-1.jpeg" alt="">
+            <img src="/images/avatars/avatar-2.jpeg" alt="">
+            <img src="/images/avatars/avatar-3.jpeg" alt="">
+          </span>
+          <span>100+ випускниць уже змінили своє життя разом із Sacred Ink Academy</span>
+        </div>
+      </div>
+      <div class="hero-machine">
+        <video id="heroMachineVideo" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture preload="auto" aria-hidden="true" style="pointer-events:none; opacity:0; transition:opacity .35s ease;">
+          <source src="/videos/hero/tattoo-machine-v4.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <section class="stat-bar">
+    <div class="container">
+      <div class="stat-row">
+        <div class="stat-item"><div class="stat-num">7+</div><div class="stat-label">років досвіду</div></div>
+        <div class="stat-item"><div class="stat-num">100+</div><div class="stat-label">випускниць</div></div>
+        <div class="stat-item"><div class="stat-num">6</div><div class="stat-label">країн</div></div>
+        <div class="stat-item"><div class="stat-num">11</div><div class="stat-label">модулів</div></div>
+        <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">місяці навчання</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section audience-stairs" id="for-whom">
+    <div class="audience-bg" style="background-image:url('/images/decor/process-bg.jpg')"></div>
+    <div class="audience-overlay"></div>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-index">[1]</span>
+          <h2 style="margin-top:12px;">Для кого<br>Sacred Ink</h2>
+        </div>
+        <a href="/ua/results/" class="btn btn-ghost-inverse">Дивитися всі історії →</a>
+      </div>
+      <div class="stairs-list">
+        <div class="stair-item"><span class="plate-bg" aria-hidden="true"></span><span class="stair-num">01</span><span class="stair-text">Ніколи не робила татуювання, але давно про це мрієш</span></div>
+        <div class="stair-item"><span class="plate-bg" aria-hidden="true"></span><span class="stair-num">02</span><span class="stair-text">Любиш малювати, але не знаєш, як перетворити це на професію</span></div>
+        <div class="stair-item"><span class="plate-bg" aria-hidden="true"></span><span class="stair-num">03</span><span class="stair-text">Хочеш змінити професію</span></div>
+        <div class="stair-item"><span class="plate-bg" aria-hidden="true"></span><span class="stair-num">04</span><span class="stair-text">Вже пробуєш робити тату, але бракує системи</span></div>
+        <div class="stair-item"><span class="plate-bg" aria-hidden="true"></span><span class="stair-num">05</span><span class="stair-text">Хочеш почати заробляти як tattoo artist</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-black" id="path">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-index" style="opacity:0.5;">[2]</span>
+          <h2 style="margin-top:12px;">Твій шлях від 0<br>до перших клієнтів</h2>
+        </div>
+        <span class="eyebrow" style="opacity:0.7;">Підтримка на кожному етапі</span>
+      </div>
+      <div class="path-scroller">
+        <div class="path-step"><div class="path-index">01</div><div class="path-label">База</div></div>
+        <div class="path-step"><div class="path-index">02</div><div class="path-label">Обладнання</div></div>
+        <div class="path-step"><div class="path-index">03</div><div class="path-label">Штучна шкіра</div></div>
+        <div class="path-step"><div class="path-index">04</div><div class="path-label">Техніка</div></div>
+        <div class="path-step"><div class="path-index">05</div><div class="path-label">Практика</div></div>
+        <div class="path-step"><div class="path-index">06</div><div class="path-label">Портфоліо</div></div>
+        <div class="path-step"><div class="path-index">07</div><div class="path-label">Перші клієнти</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="program">
+    <div class="container">
+      <div class="program-grid">
+        <div>
+          <span class="section-index">[3]</span>
+          <h2 style="margin-top:12px;">Програма<br>навчання</h2>
+          <p style="margin-top:20px; opacity:0.75; max-width:44ch;">11 структурованих модулів, які проведуть тебе від перших ліній до реальних клієнтів.</p>
+          <ul class="program-list">
+            <li><b>01</b> Knowledge — теорія та безпека</li>
+            <li><b>02</b> Practice — штучна шкіра та техніка</li>
+            <li><b>03</b> Real results — портфоліо та перші клієнти</li>
+          </ul>
+          <div style="margin-top:28px; display:flex; gap:14px; flex-wrap:wrap;">
+            <a href="/ua/tattoo-course/baza/#program" class="btn btn-primary">Переглянути програму →</a>
+          </div>
+        </div>
+        <img src="/images/works/program-block.jpeg" alt="Робота студентки, тонка лінія" class="program-visual" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="works">
+    <div class="container">
+      <div class="works-head">
+        <div>
+          <span class="section-index">[4]</span>
+          <h2 style="margin-top:12px;">Роботи студентів</h2>
+        </div>
+        <div style="display:flex; align-items:center; gap:20px;">
+          <a href="/ua/results/" class="btn btn-ghost">Дивитися результати →</a>
+          <div class="works-nav">
+            <button type="button" data-works-prev aria-label="Попередні роботи">←</button>
+            <button type="button" data-works-next aria-label="Наступні роботи">→</button>
+          </div>
+        </div>
+      </div>
+      <WorksGallery items={works} />
+    </div>
+  </section>
+
+  <section class="section section-warm" id="teacher">
+    <div class="container">
+      <span class="section-index">[5]</span>
+      <div class="teacher-card" style="margin-top:20px; background:var(--paper);">
+        <img src="/images/kateryna/teacher-block.jpeg" alt="Катерина Єрьоменко" class="teacher-photo" style="width:100%; height:100%; object-fit:cover;">
+        <div class="teacher-body">
+          <p class="teacher-quote">«Я вірю, що кожна людина може навчитися робити красиві тату. Потрібна система, практика і правильна підтримка.»</p>
+          <div>
+            <div class="teacher-name">Катерина Єрьоменко</div>
+            <div class="teacher-role">Тату-майстер та викладач · 7+ років досвіду · thin line, microrealism, black &amp; grey</div>
+          </div>
+          <div>
+            <a href="/ua/kateryna-yeromenko/" class="btn btn-ghost">Про Катерину →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="reviews">
+    <div class="container">
+      <ReviewsGallery heading="Відгуки студенток" index="[6]" images={imageReviews} videos={videoReviews} />
+      <div style="margin-top:16px; text-align:right;">
+        <a href="/ua/results/" class="btn btn-ghost">Усі відгуки →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-black" id="test-drive">
+    <div class="container testdrive">
+      <div>
+        <span class="section-index" style="opacity:0.5;">[7]</span>
+        <h2 style="margin-top:12px;">Навчу тебе робити тату за 5 днів</h2>
+        <p style="margin-top:18px; opacity:0.75; max-width:42ch;">Безкоштовний тест-драйв професії тату-майстра від Sacred Ink Academy.</p>
+        <ul class="testdrive-checks">
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9.5l4 4 8-8" stroke="currentColor" stroke-width="1.6"/></svg> 5 практичних уроків</li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9.5l4 4 8-8" stroke="currentColor" stroke-width="1.6"/></svg> Перші результати на штучній шкірі</li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9.5l4 4 8-8" stroke="currentColor" stroke-width="1.6"/></svg> Підтримка від команди</li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9.5l4 4 8-8" stroke="currentColor" stroke-width="1.6"/></svg> Доступ одразу після реєстрації</li>
+        </ul>
+        <a href="/ua/free-tattoo-course/" class="btn btn-inverse" style="margin-top:30px;">Спробувати безкоштовно</a>
+      </div>
+      <img src="/images/decor/testdrive-visual.jpeg" alt="Ескіз тату" class="testdrive-visual" style="width:100%; height:100%; object-fit:cover;">
+    </div>
+  </section>
+
+  <section class="section" id="knowledge">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-index">[8]</span>
+          <h2 style="margin-top:12px;">База знань<br>Sacred Ink</h2>
+        </div>
+        <a href="/ua/knowledge/" class="btn btn-ghost">Усі матеріали →</a>
+      </div>
+      <div class="kb-grid">
+        <a class="kb-card" href="/ua/knowledge/">
+          <span class="kb-cat">Старт у професії</span>
+          <span class="kb-title">Як стати тату-майстром з нуля</span>
+        </a>
+        <a class="kb-card" href="/ua/knowledge/">
+          <span class="kb-cat">Обладнання та матеріали</span>
+          <span class="kb-title">Як вибрати першу тату-машинку</span>
+        </a>
+        <a class="kb-card" href="/ua/knowledge/">
+          <span class="kb-cat">Техніка татуювання</span>
+          <span class="kb-title">Як навчитися робити рівні лінії</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="faq">
+    <div class="container">
+      <span class="section-index">[9]</span>
+      <h2 style="margin-top:12px;">Питання, які ставлять частіше за все</h2>
+      <div class="faq-list" style="margin-top:32px;">
+        <div class="faq-item">
+          <button class="faq-q"><span>Чи потрібен художній досвід, щоб почати?</span><span class="plus"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Ні. Програма побудована так, щоб провести тебе з нуля — від базових ліній до впевненої техніки, крок за кроком.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>Скільки триває навчання?</span><span class="plus"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Курс «Тату Майстер з Нуля» триває 2 місяці та складається з 11 модулів з перевіркою домашніх завдань.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>Що входить у безкоштовний тест-драйв?</span><span class="plus"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">5 днів практичних уроків на штучній шкірі з підтримкою команди — щоб ти відчула, як проходить навчання, перш ніж прийняти рішення.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>Чи є навчання онлайн?</span><span class="plus"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Так, формат повністю онлайн — з практикою, зворотним зв'язком і супроводом на кожному етапі.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section final-cta" id="final-cta">
+    <div class="container">
+      <span class="eyebrow">Sacred Ink Academy</span>
+      <h2 style="margin-top:16px;">Почни з 5 безкоштовних днів</h2>
+      <a href="/ua/free-tattoo-course/" class="btn btn-primary">Почати з 5 безкоштовних днів</a>
+    </div>
+  </section>
+</BaseLayout>

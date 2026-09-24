@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCategories, getArticles } from '../../../lib/contentful.js';
+
+let categories = [];
+let articles = [];
+let contentfulError = null;
+try {
+  [categories, articles] = await Promise.all([getCategories(), getArticles({ limit: 12 })]);
+} catch (err) {
+  contentfulError = err.message;
+}
+---
+<BaseLayout
+  title="База знань Sacred Ink — все про професію тату-майстра"
+  description="База знань Sacred Ink Academy: старт у професії, техніка татуювання, обладнання, безпека та шкіра, кар'єра та клієнти."
+  path="/ua/knowledge/"
+>
+  <section class="section page-hero">
+    <div class="container">
+      <nav class="breadcrumbs"><a href="/ua/">Головна</a><span>/</span><span>База знань</span></nav>
+      <span class="eyebrow">База знань</span>
+      <h1 style="margin-top:16px;">База знань<br>Sacred Ink</h1>
+      <p class="hero-sub">Професійні матеріали про техніку, обладнання, безпеку та кар'єру тату-майстра — від Sacred Ink Academy.</p>
+      <div class="kb-search">
+        <input type="search" placeholder="Пошук по базі знань…" aria-label="Пошук">
+      </div>
+      {categories.length > 0 && (
+        <div class="kb-filters">
+          <button class="kb-filter is-active">Усі</button>
+          {categories.map((cat) => (
+            <a href={`/ua/knowledge/${cat.slug}/`} class="kb-filter" style="text-decoration:none; display:inline-flex;">{cat.title}</a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  {contentfulError && (
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="stub-note" style="max-width:720px;">
+          <strong>Contentful ще не підключено.</strong> Ця сторінка стане живою базою знань, щойно в <code>.env</code> буде заповнено CONTENTFUL_SPACE_ID і CONTENTFUL_DELIVERY_TOKEN, а в Contentful будуть створені content types <code>knowledgeCategory</code> і <code>knowledgeArticle</code>.
+          <br><br>Технічна деталь: {contentfulError}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {articles.length > 0 && (
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div style="display:flex; flex-direction:column;">
+          {articles.map((a, i) => (
+            <a
+              href={`/ua/knowledge/${a.category?.slug ?? 'article'}/${a.slug}/`}
+              style={`text-decoration:none; color:inherit; display:block; padding:32px 0; ${i === 0 ? '' : 'border-top:1px solid rgba(15,3,2,.14);'}`}
+            >
+              <span class="case-meta">{a.category?.title ?? 'База знань'}</span>
+              <h3 style="margin-top:10px; font-size:22px;">{a.title}</h3>
+              <p style="margin-top:12px; opacity:0.72; font-size:15px; max-width:72ch; line-height:1.6;">{a.excerpt}</p>
+              <span class="btn btn-ghost" style="margin-top:18px;">Читати →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {!contentfulError && articles.length === 0 && (
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="stub-note">Contentful підключено, але статей ще немає. Додай першу статтю в Contentful → content type "Knowledge Article" → Publish.</div>
+      </div>
+    </section>
+  )}
+
+  <section class="section section-black final-cta">
+    <div class="container">
+      <span class="eyebrow" style="opacity:0.7;">Sacred Ink Academy</span>
+      <h2 style="margin-top:16px;">Готова піти далі теорії?</h2>
+      <a href="/ua/free-tattoo-course/" class="btn btn-inverse">Спробувати 5 днів безкоштовно</a>
+    </div>
+  </section>
+</BaseLayout>

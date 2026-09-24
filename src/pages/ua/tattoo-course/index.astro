@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ReviewsGallery from '../../../components/ReviewsGallery.astro';
+import WorksGallery from '../../../components/WorksGallery.astro';
+import { videoReviews, imageReviews } from '../../../lib/reviews.js';
+import { works } from '../../../lib/works.js';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: 'Тату Майстер з Нуля',
+  description: 'Онлайн-курс татуювання з нуля: 11 модулів, 2 місяці, практика та перевірка домашніх завдань.',
+  provider: { '@type': 'EducationalOrganization', name: 'Sacred Ink Academy', sameAs: 'https://sacredinkacademy.com/ua/' },
+};
+---
+<BaseLayout
+  title="Курс «Тату Майстер з Нуля» — онлайн-навчання Sacred Ink Academy"
+  description="Онлайн-курс «Тату Майстер з Нуля»: 11 модулів, 2 місяці, від бази до перших клієнтів. Практика, перевірка домашніх завдань, підтримка Sacred Ink Academy."
+  path="/ua/tattoo-course/"
+  jsonLd={jsonLd}
+>
+  <section class="section" id="formats" style="padding-bottom:0;">
+    <div class="container">
+      <nav class="breadcrumbs"><a href="/ua/">Головна</a><span>/</span><a href="/ua/">Навчання</a><span>/</span><span>Тату Майстер з Нуля</span></nav>
+      <span class="section-index">[1]</span>
+      <h1 style="margin-top:12px;">Варіанти навчання</h1>
+      <p class="content-block" style="margin-top:14px; opacity:0.6; font-size:14px;">Оберіть формат — на кожній сторінці повна програма, що входить і вартість.</p>
+      <div class="format-grid">
+        <a href="/ua/tattoo-course/baza/" class="format-card" style="text-decoration:none; color:inherit;">
+          <span class="format-sticker">Сьогодні купили +13 людей</span>
+          <span class="format-name">База</span>
+          <p style="font-size:13px; opacity:0.75; margin:0;">Опанувати тату з нуля у своєму темпі — самостійно, але не наосліп: Катерина бачить твої роботи й коригує, щоб ти не набивала помилок наодинці.</p>
+          <ul class="format-list">
+            <li>6 блоків: теорія, підготовка, перша практика, техніки, перехід на моделей, Instagram і перші клієнти</li>
+            <li>Письмовий фідбек по кожній роботі, без зідзвонів</li>
+            <li>Доступ до матеріалів на 3 місяці</li>
+          </ul>
+          <span class="btn btn-inverse">Детальніше →</span>
+        </a>
+        <a href="/ua/tattoo-course/grupove/" class="format-card is-silver" style="text-decoration:none; color:inherit;">
+          <span class="format-name">Групове навчання</span>
+          <ul class="format-list">
+            <li>Все з формату База</li>
+            <li>Групові розбори та зідзвони</li>
+            <li>Підтримка однодумниць</li>
+          </ul>
+          <span class="btn btn-ghost">Детальніше →</span>
+        </a>
+        <a href="/ua/tattoo-course/pidvyshchennya-kvalifikatsii/" class="format-card" style="text-decoration:none; color:inherit;">
+          <span class="format-name">Підвищення кваліфікації</span>
+          <ul class="format-list">
+            <li>Для тих, хто вже тату­ює і хоче закрити прогалини</li>
+            <li>Розбір власних робіт</li>
+            <li>Поглиблені техніки</li>
+          </ul>
+          <span class="btn btn-ghost">Детальніше →</span>
+        </a>
+        <a href="/ua/tattoo-course/mikrorealizm/" class="format-card" style="text-decoration:none; color:inherit;">
+          <span class="format-name">Мікрореалізм</span>
+          <ul class="format-list">
+            <li>Спеціалізація на мікрореалістичних роботах</li>
+            <li>Робота з деталізацією та тінями</li>
+            <li>Портфоліо у стилі мікрореалізму</li>
+          </ul>
+          <span class="btn btn-ghost">Детальніше →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="section-index">[2]</span>
+      <h2 style="margin-top:12px;">Роботи студентів</h2>
+      <div style="margin-top:28px;"><WorksGallery items={works} /></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <ReviewsGallery heading="Відгуки" index="[3]" images={imageReviews} videos={videoReviews} />
+    </div>
+  </section>
+
+  <section class="section section-black final-cta">
+    <div class="container">
+      <span class="eyebrow" style="opacity:0.7;">Sacred Ink Academy</span>
+      <h2 style="margin-top:16px;">Отримай програму та умови навчання</h2>
+      <a href="/ua/contact/" class="btn btn-inverse">Отримати програму та умови</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const telegramUrl = 'https://t.me/+3pOXD0ohuZs4Nzky';
+
+const days = [
+  {
+    n: 'DAY 1',
+    title: 'З чого все починається',
+    desc: 'Розберемось, чому «не вийде» — це просто страх, а не вирок. І з чого насправді стартує майстер. Скільки заробляють майстри, що треба для старту.',
+  },
+  {
+    n: 'DAY 2',
+    title: 'База, без якої не сідають за практику',
+    desc: 'Безпека і стерильність, алергії.',
+  },
+  {
+    n: 'DAY 3',
+    title: 'Перший ескіз',
+    desc: 'Робимо по справжньому запиту клієнта.',
+  },
+  {
+    n: 'DAY 4',
+    title: 'Перша лінія',
+    desc: 'Ставимо руку. Вчимось тримати машинку так, щоб вона тебе слухалась. Тут ти вперше спробуєш сама — і побачиш, що руки в тебе якраз звідти. Робимо машинкою тату або олівцем.',
+  },
+  {
+    n: 'DAY 5',
+    title: 'Як на цьому заробляти',
+    desc: 'Найголовніше. Де брати перших клієнтів, як зібрати сторінку, з чого почати, щоб тебе помітили. Виходиш із чітким планом, а не з питанням «і що тепер». Отримання стипендії 150 євро.',
+  },
+];
+
+const forWhom = [
+  'Давно засинаєш із думкою про тату — але щоразу зупиняє «а раптом не вийде»',
+  'Вже пробувала бити, але робиш це навпомацки, без системи й без впевненості',
+  'Втомилась працювати на когось і хочеш професію, де сама собі графік',
+  'Живеш за кордоном і шукаєш справу, яка годуватиме',
+  'Ти вже майстер — б’юті чи перманент — і хочеш додати до цього тату',
+];
+
+const stories = [
+  { name: 'Вікторія', img: '/images/students/viktoria.jpeg', text: 'Служила в поліції, малювати не вміла й до нового підходила з острахом. Зараз вивчила всі техніки, відкрила власну студію й працює на себе.' },
+  { name: 'Юлія, Бельгія', img: '/images/students/yulia.jpeg', text: 'Мріяла про тату ще з дитинства. Пройшла курс за півтора місяця й влаштувалась у салон у Бельгії.' },
+  { name: 'Ліда', img: '/images/students/lida.jpeg', text: 'Мама трьох дітей, носила цю мрію ще з 2014-го. Навчалась онлайн, переїхала в Німеччину і б’є там.' },
+];
+
+const howItWorks = [
+  'Тиснеш кнопку — і одразу опиняєшся в моєму телеграм-каналі',
+  'Там уже чекаєш перший день навчання, буде дата початку',
+  'П’ять днів ідеш у своєму темпі й робиш перші кроки',
+  'У кінці розумієш, твоє це чи ні — і як рухатись далі',
+];
+
+const faq = [
+  ['Це справді безкоштовно?', 'Так, повністю. Ці 5 днів — мій подарунок тобі, щоб ти спробувала, перш ніж щось вирішувати.'],
+  ['А якщо я взагалі з нуля?', 'Тоді тобі точно сюди. Ми йдемо з найпростішого, крок за кроком — нічого не треба знати заздалегідь.'],
+  ['Потрібна своя машинка?', 'Ні. Щоб пройти ці 5 днів, достатньо дивитись і вбирати. А якщо машинка вже є — чудово, одразу спробуєш на практиці.'],
+  ['Що буде після 5 днів?', 'Ти зрозумієш, чи хочеш іти в цю професію по-справжньому. А хто захоче далі — тому розкажу про повний курс.'],
+];
+---
+<BaseLayout
+  title="Навчу бити тату за 5 днів безкоштовно | Sacred Ink Academy"
+  description="Безкоштовний 5-денний тест-драйв професії тату-майстра від Катерини Єрьоменко: від першої лінії до розуміння, як влаштована ця професія. Старт у телеграмі."
+  path="/ua/free-tattoo-course/"
+>
+  <section class="section page-hero" style="position:relative; overflow:hidden; padding-top:clamp(48px,8vw,96px); padding-bottom:clamp(48px,8vw,96px);">
+    <div style="position:absolute; inset:0; background:url('/images/decor/free-course-hero-bg.jpg') center/cover no-repeat;"></div>
+    <div style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(15,3,2,0.82) 0%, rgba(15,3,2,0.6) 45%, rgba(15,3,2,0.28) 100%);"></div>
+    <div class="container" style="position:relative; z-index:1;">
+      <nav class="breadcrumbs" style="color:var(--paper); opacity:0.7;"><a href="/ua/" style="color:var(--paper);">Головна</a><span>/</span><span>5-денний безкоштовний курс</span></nav>
+      <span class="eyebrow" style="color:var(--paper); opacity:0.8;">Безкоштовно · 5 днів</span>
+      <h1 style="margin-top:16px; color:var(--paper); max-width:18ch;">Навчу тебе бити тату за 5 днів. Безкоштовно.</h1>
+      <p class="hero-sub" style="color:var(--paper); opacity:0.85;">Від першої лінії до розуміння, як влаштована ця професія. Навіть якщо ти ще жодного разу не тримала машинку.</p>
+      <p class="hero-sub" style="margin-top:10px; color:var(--paper); opacity:0.85;">П’ять днів. Не теорія заради теорії — а те, що реально робиш руками.</p>
+      <div class="hero-actions">
+        <a href={telegramUrl} class="btn btn-primary" target="_blank" rel="noopener">Хочу навчатись → перейти в телеграм</a>
+      </div>
+      <p style="margin-top:24px; color:var(--paper); opacity:0.75; font-size:15px; max-width:56ch;">Вести буду я, Катерина Єрьоменко — б’ю тату вже 7 років і навчаю інших. Понад 100 моїх учениць сьогодні працюють і живуть із цього.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="section-index">[1]</span>
+      <h2 style="margin-top:12px;">Для кого це</h2>
+      <p class="content-block" style="margin-top:14px; opacity:0.75;">Це для тебе, якщо ти впізнаєш себе тут:</p>
+      <div class="for-whom-grid" style="margin-top:28px;">
+        {forWhom.map((t) => (
+          <div class="fw-card"><span class="fw-num">🖤</span><span class="fw-text">{t}</span></div>
+        ))}
+      </div>
+      <p class="content-block" style="margin-top:24px; opacity:0.75;">Не важливо, ти з нуля чи вже щось пробувала. За ці 5 днів ти чесно зрозумієш: твоє це чи ні. І що робити далі.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="section-index">[2]</span>
+      <h2 style="margin-top:12px;">Що буде за 5 днів</h2>
+      <ul class="module-list" style="margin-top:28px;">
+        {days.map((d) => (
+          <li class="module-item"><span class="module-num">{d.n}</span><span class="module-title">{d.title}</span><span class="module-desc">{d.desc}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container two-col">
+      <img src="/images/kateryna/teacher-block.jpeg" alt="Катерина Єрьоменко" style="width:100%; height:100%; object-fit:cover; min-height:320px;">
+      <div>
+        <span class="section-index">[3]</span>
+        <h2 style="margin-top:12px;">Хто тебе вчитиме</h2>
+        <p class="content-block" style="margin-top:18px;">Я — Катерина Єрьоменко. Б’ю тату 7 років, працюю в графіці й мікрореалізмі, навчаю дівчат цій професії.</p>
+        <p class="content-block" style="margin-top:14px;">Починала я не з мистецької школи. Сиділа касиркою в банку й тихо ненавиділа кожен свій день — хотілось творчого. Купила першу машинку, вчилась удома, набивала руку на моделях. Минули роки — і тепер у мене своя студія, виступи на конвентах, дохід від 5000$ на місяць і власна академія.</p>
+        <p class="content-block" style="margin-top:14px;">Я пройшла цей шлях сама — від «страшно навіть почати» до «прокидаюсь і люблю те, що роблю». Тому й проведу тебе ним, крок за кроком.</p>
+        <p class="content-block" style="margin-top:14px; font-weight:600;">100+ випускниць. Мої дівчата працюють в Україні, Німеччині, Бельгії. Одна вже за місяць після навчання заробила 55 000 грн.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="section-index">[4]</span>
+      <h2 style="margin-top:12px;">Історії моїх учениць</h2>
+      <div class="case-list" style="gap:16px; margin-top:28px;">
+        {stories.map((s) => (
+          <article class="case-card" style="max-width:640px;">
+            <img src={s.img} alt={`Робота учениці — ${s.name}`} style="width:100%; height:100%; min-height:130px; max-height:150px; object-fit:cover;">
+            <div class="case-body" style="padding:18px 22px; gap:8px;">
+              <span class="case-meta">Учениця Sacred Ink</span>
+              <h3 style="font-size:18px;">{s.name}</h3>
+              <p style="opacity:0.75; font-size:14px; line-height:1.5;">{s.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p style="margin-top:24px; opacity:0.6; font-size:14px;">Це не всі — решту історій викладаю в себе в <a href="https://www.instagram.com/katia_yeromenko/" target="_blank" rel="noopener" style="text-decoration:underline;">Instagram</a>.</p>
+    </div>
+  </section>
+
+  <section class="section section-black" id="how-it-works">
+    <div class="container">
+      <span class="section-index" style="opacity:0.5;">[5]</span>
+      <h2 style="margin-top:12px;">Як це працює</h2>
+      <ol style="margin-top:28px; display:flex; flex-direction:column; gap:16px; max-width:56ch; padding-left:22px;">
+        {howItWorks.map((step) => (
+          <li style="font-size:16px; opacity:0.85; line-height:1.5;">{step}</li>
+        ))}
+      </ol>
+      <p style="margin-top:24px; opacity:0.7; max-width:56ch;">Один клік — і ти вже вчишся. Ніяких форм, ніякого очікування. Безкоштовно.</p>
+      <a href={telegramUrl} class="btn btn-inverse" style="margin-top:28px;" target="_blank" rel="noopener">Почати навчання в телеграмі →</a>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="faq">
+    <div class="container">
+      <span class="section-index">[6]</span>
+      <h2 style="margin-top:12px;">Часті питання</h2>
+      <div class="faq-list" style="margin-top:32px;">
+        {faq.map(([q, a]) => (
+          <div class="faq-item">
+            <button class="faq-q"><span>{q}</span><span class="plus"></span></button>
+            <div class="faq-a"><div class="faq-a-inner">{a}</div></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section final-cta">
+    <div class="container">
+      <span class="eyebrow">Sacred Ink Academy</span>
+      <h2 style="margin-top:16px;">Почни безкоштовно вже сьогодні</h2>
+      <a href={telegramUrl} class="btn btn-primary" target="_blank" rel="noopener">Почати навчання в телеграмі →</a>
+    </div>
+  </section>
+</BaseLayout>
