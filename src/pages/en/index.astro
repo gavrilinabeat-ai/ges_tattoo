@@ -5,6 +5,13 @@ import WorksGallery from '../../components/WorksGallery.astro';
 import { videoReviews, imageReviews } from '../../lib/reviews.js';
 import { works } from '../../lib/works.js';
 
+const faq = [
+  ['Do I need to know how to draw to start?', 'No. And that fear is exactly what stops a lot of people from ever trying — which is a shame. I take you from absolute zero: from the simplest line to confident technique, step by step. First you learn to build a sketch, get your hand position right, get a feel for the machine — and only then move on to harder work. Almost all my students started out saying "I can\'t draw at all." Tattooing isn\'t something you\'re born with — it\'s a skill you build. And we\'ll build it together.'],
+  ['How long does the training take?', 'The "Tattoo Master from Scratch" course is 2 months and 11 modules: from safety and prep to advanced techniques, content, and your first clients. Every module pairs theory with hands-on homework that I review. You move through it in order and calmly get from your first line to your first real work on people in 2 months. Access to the lessons stays open after the course too — you can always come back and rewatch.'],
+  ["What's included in the free test drive?", "5 days of practice on practice skin — with the team right there if something's not working. These are real lessons, so you can feel how everything works before deciding anything. In these 5 days you'll take your first steps and find out whether it's for you. You risk nothing. You just try it."],
+  ['Does online training actually work?', "Yes. You learn from wherever you are, at your own pace — and I'm with you at every step: giving you practice, reviewing your work, guiding you. You get the same feedback and mentoring as you would in person. My graduates work across Ukraine, Germany, and Belgium — and every one of them trained online."],
+];
+
 const jsonLd = [
   {
     '@context': 'https://schema.org',
@@ -16,28 +23,11 @@ const jsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'Do I need any art experience to start?',
-        acceptedAnswer: { '@type': 'Answer', text: 'No. The program is built to take you from zero — from basic lines to confident technique, step by step.' },
-      },
-      {
-        '@type': 'Question',
-        name: 'How long does the training take?',
-        acceptedAnswer: { '@type': 'Answer', text: 'The "Tattoo Master from Scratch" course runs for 2 months and consists of 11 modules with homework review.' },
-      },
-      {
-        '@type': 'Question',
-        name: "What's included in the free test drive?",
-        acceptedAnswer: { '@type': 'Answer', text: '5 days of hands-on lessons on practice skin with support from the team — so you can feel what the training is like before you decide.' },
-      },
-      {
-        '@type': 'Question',
-        name: 'Is the training online?',
-        acceptedAnswer: { '@type': 'Answer', text: "Yes, it's fully online — with practice, feedback, and support at every step." },
-      },
-    ],
+    mainEntity: faq.map(([q, a]) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
   },
 ];
 ---
@@ -248,22 +238,12 @@ const jsonLd = [
       <span class="section-index">[9]</span>
       <h2 style="margin-top:12px;">The most common questions</h2>
       <div class="faq-list" style="margin-top:32px;">
-        <div class="faq-item">
-          <button class="faq-q"><span>Do I need any art experience to start?</span><span class="plus"></span></button>
-          <div class="faq-a"><div class="faq-a-inner">No. The program is built to take you from zero — from basic lines to confident technique, step by step.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q"><span>How long does the training take?</span><span class="plus"></span></button>
-          <div class="faq-a"><div class="faq-a-inner">The "Tattoo Master from Scratch" course runs for 2 months and consists of 11 modules with homework review.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q"><span>What's included in the free test drive?</span><span class="plus"></span></button>
-          <div class="faq-a"><div class="faq-a-inner">5 days of hands-on lessons on practice skin with support from the team — so you can feel what the training is like before you decide.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q"><span>Is the training online?</span><span class="plus"></span></button>
-          <div class="faq-a"><div class="faq-a-inner">Yes, it's fully online — with practice, feedback, and support at every step.</div></div>
-        </div>
+        {faq.map(([q, a]) => (
+          <div class="faq-item">
+            <button class="faq-q"><span>{q}</span><span class="plus"></span></button>
+            <div class="faq-a"><div class="faq-a-inner">{a}</div></div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
