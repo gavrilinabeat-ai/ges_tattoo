@@ -13,17 +13,24 @@ export interface Props {
   title: string;
   description: string;
   path: string; // e.g. "/ua/" or "/ua/about/" — used for canonical + hreflang
-  enPath?: string; // matching EN url if it exists yet, defaults to /en/
+  enPath?: string; // matching EN url; defaults to the same path with /ua/ swapped for /en/
+  ukPath?: string; // matching UA url when this is an EN page with a different slug; defaults to the same path with /en/ swapped for /ua/
+  lang?: 'uk' | 'en';
   noindex?: boolean;
   jsonLd?: object | object[];
 }
 
-const { title, description, path, enPath = '/en/', noindex = false, jsonLd } = Astro.props;
+const { title, description, path, enPath, ukPath: ukPathProp, lang = 'uk', noindex = false, jsonLd } = Astro.props;
 const site = 'https://sacredinkacademy.com';
 const jsonLdList = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const ukPath = ukPathProp ?? (lang === 'en' ? path.replace(/^\/en\//, '/ua/') : path);
+const finalEnPath = enPath ?? (lang === 'en' ? path : path.replace(/^\/ua\//, '/en/'));
+const stickyCta = lang === 'en'
+  ? { href: '/en/free-tattoo-course/', label: 'Try it for free' }
+  : { href: '/ua/free-tattoo-course/', label: 'Спробувати безкоштовно' };
 ---
 <!DOCTYPE html>
-<html lang="uk">
+<html lang={lang}>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,13 +38,13 @@ const jsonLdList = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
   <meta name="description" content={description}>
   {noindex && <meta name="robots" content="noindex,follow">}
   <link rel="canonical" href={`${site}${path}`}>
-  <link rel="alternate" hreflang="uk" href={`${site}${path}`}>
-  <link rel="alternate" hreflang="en" href={`${site}${enPath}`}>
+  <link rel="alternate" hreflang="uk" href={`${site}${ukPath}`}>
+  <link rel="alternate" hreflang="en" href={`${site}${finalEnPath}`}>
   <meta property="og:type" content="website">
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
   <meta property="og:url" content={`${site}${path}`}>
-  <meta property="og:locale" content="uk_UA">
+  <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'uk_UA'}>
   <link rel="icon" href="/assets/logo/icon-black.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,14 +54,14 @@ const jsonLdList = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
   ))}
 </head>
 <body>
-  <Header />
+  <Header lang={lang} />
   <main>
     <slot />
   </main>
-  <Footer />
-  <div class="sticky-cta"><a href="/ua/free-tattoo-course/" class="btn btn-primary">Спробувати безкоштовно</a></div>
-  <DiscountPopup />
-  <Lightbox />
+  <Footer lang={lang} />
+  <div class="sticky-cta"><a href={stickyCta.href} class="btn btn-primary">{stickyCta.label}</a></div>
+  <DiscountPopup lang={lang} />
+  <Lightbox lang={lang} />
   <script src="/js/popup.js" is:inline></script>
   <script src="/js/app.js" is:inline></script>
 </body>

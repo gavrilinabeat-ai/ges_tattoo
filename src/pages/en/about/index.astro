@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import WorksGallery from '../../../components/WorksGallery.astro';
+
+const academyPhotos = [
+  { src: '/images/academy/academy-01.jpeg', alt: 'Kateryna Yeromenko with a student' },
+  { src: '/images/academy/academy-02.jpeg', alt: 'Kateryna Yeromenko with a student and a certificate' },
+  { src: '/images/academy/academy-03.jpeg', alt: 'Kateryna Yeromenko with a student' },
+  { src: '/images/academy/academy-04.jpeg', alt: 'Kateryna Yeromenko with a student' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://sacredinkacademy.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://sacredinkacademy.com/en/about/' },
+  ],
+};
+
+const beliefs = [
+  { title: 'Craft comes first', text: "We're not about fast, sloppy work for quick cash. We're about clean lines, real technique, and respect for someone else's skin. Quality is what brings people back — and makes them bring others." },
+  { title: 'A person, not a headcount', text: "We don't pack groups to hit a number. We take every student to a real result — with feedback, support, and an honest conversation. Better fewer students who actually make it than a crowd that doesn't." },
+  { title: 'Honest, no fairy tales', text: 'We never promise "a master in a week." We give you a system and walk beside you. Results come to those who put in the work — and we\'re not afraid to say that plainly.' },
+  { title: 'A tattoo is a ritual, not an assembly line', text: 'Behind every piece, we teach you to see the person and their story. A Sacred Ink artist isn\'t just a pair of hands. It\'s someone who understands why that person came.' },
+  { title: 'Freedom is the whole point', text: "We don't just teach you to tattoo — we teach you to build a business: your own schedule, your own income, and the freedom to work from home or from the other side of the world." },
+];
+
+const forWhom = [
+  'For those starting from zero who want to change their life — master a craft that both feeds them and inspires them',
+  'For those who already tried on their own or ended up in a bad course — and got stuck without a system or confidence',
+  'For working artists who want higher prices, a steady flow of clients, and stronger technique',
+  'For those living abroad who are looking for a profession that isn\'t tied to a location',
+  'For beauty and PMU artists who want to add tattooing — to their services and their income',
+];
+---
+<BaseLayout
+  title="About Sacred Ink Academy — why 'Sacred Ink'"
+  description="Sacred Ink Academy — the philosophy, mission, and teaching principles behind our online tattoo school: why ink is sacred to us and who the academy is for."
+  path="/en/about/"
+  lang="en"
+  jsonLd={jsonLd}
+>
+  <section class="section page-hero" style="padding-bottom:clamp(24px,3vw,36px);">
+    <div class="container" style="display:flex; align-items:flex-start; gap:28px;">
+      <img src="/assets/logo/icon-cream.svg" alt="Sacred Ink Academy" style="width:96px; height:96px; flex:0 0 96px; margin-top:4px;">
+      <div>
+        <nav class="breadcrumbs"><a href="/en/">Home</a><span>/</span><span>About</span></nav>
+        <span class="eyebrow">Sacred Ink Academy</span>
+        <h1 style="margin-top:16px; font-size:clamp(26px,3.4vw,40px);">Why "Sacred Ink"</h1>
+        <p class="hero-sub">Sacred Ink — sacred ink. We didn't pick the name because it sounds nice. We picked it because it's about the essence of what we do.</p>
+        <div class="content-block" style="margin-top:20px;">
+          <p>A tattoo isn't just a picture on skin. It's a mark that stays forever. Behind every design is a person: their pain, their victory, something they never want to forget, the moment a new chapter began. People don't come to an artist just "for a tattoo" — they come to preserve something that matters, for life.</p>
+          <p>That's why ink is genuinely sacred to us. Through it, a person lives through something of their own. And the artist is the one who helps fix it in place, forever.</p>
+          <p>We don't teach people to "apply designs." We teach you to become an artist that people trust with the most precious things they have — their body and their story.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="section-index">[1]</span>
+      <h2 style="margin-top:12px;">Our mission</h2>
+      <div class="content-block" style="margin-top:20px;">
+        <p>To give people a profession that genuinely changes their life — and to teach it so well that they never have to feel ashamed in front of the craft or the client.</p>
+        <p>We want more people to finally allow themselves a creative, free profession that also pays well. So a mom on maternity leave, a woman living abroad, someone burning out in a job they don't love — can become an artist and live off the thing they love.</p>
+        <p>And do it skillfully, safely, and confidently. Not "somehow, it worked out."</p>
+      </div>
+      <div style="margin-top:32px;"><WorksGallery items={academyPhotos} lang="en" /></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="section-index">[2]</span>
+      <h2 style="margin-top:12px;">What we believe</h2>
+      <div style="margin-top:32px; display:flex; flex-direction:column; gap:28px;">
+        {beliefs.map((b) => (
+          <div style="border-top:1px solid rgba(15,3,2,.14); padding-top:22px;">
+            <h3 style="font-size:18px;">{b.title}</h3>
+            <p style="margin-top:10px; opacity:0.78; font-size:15px; line-height:1.65; max-width:70ch;">{b.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="section-index">[3]</span>
+      <h2 style="margin-top:12px;">Who this academy is for</h2>
+      <div class="for-whom-grid" style="margin-top:28px;">
+        {forWhom.map((t, i) => (
+          <div class="fw-card"><span class="fw-num">{String(i + 1).padStart(2, '0')}</span><span class="fw-text">{t}</span></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="section-index">[4]</span>
+      <h2 style="margin-top:12px;">What sets us apart</h2>
+      <div class="content-block" style="margin-top:20px;">
+        <p>We're not "just another tattoo course." We're a whole ecosystem where you get everything at once: technique, Instagram setup, the ability to find clients, a mentor by your side, and a community of people just like you.</p>
+        <p>Because an artist without clients is just a hobby. An artist with a system is a profession — and freedom.</p>
+      </div>
+      <p style="margin-top:28px; font-size:clamp(20px,2.6vw,28px); font-weight:700;">Sacred Ink Academy — where a hobby becomes a calling. 🖤</p>
+    </div>
+  </section>
+
+  <section class="section section-black final-cta">
+    <div class="container">
+      <span class="eyebrow" style="opacity:0.7;">Sacred Ink Academy</span>
+      <h2 style="margin-top:16px;">Ready to try the first step?</h2>
+      <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:32px;">
+        <a href="/en/free-tattoo-course/" class="btn btn-inverse">Try 5 days for free</a>
+        <a href="/en/tattoo-course/" class="btn btn-ghost-inverse">Learn about the program</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

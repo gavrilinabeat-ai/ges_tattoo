@@ -96,7 +96,7 @@ window.SIA_Popup = (function () {
   function submitToCrm(email) {
     var payload = {
       email: email,
-      language: 'ua',
+      language: (form && form.dataset.lang) || 'ua',
       source_page: window.location.pathname,
       utm: Object.fromEntries(new URLSearchParams(window.location.search)),
       created_at: new Date().toISOString(),
@@ -130,9 +130,11 @@ window.SIA_Popup = (function () {
   function initCopy() {
     copyBtn.addEventListener('click', function () {
       var text = promoCodeEl.textContent;
+      var copiedLabel = copyBtn.dataset.copiedLabel || 'Скопійовано ✓';
+      var copyLabel = copyBtn.dataset.copyLabel || 'Скопіювати';
       var done = function () {
-        copyBtn.textContent = 'Скопійовано ✓';
-        setTimeout(function () { copyBtn.textContent = 'Скопіювати'; }, 1800);
+        copyBtn.textContent = copiedLabel;
+        setTimeout(function () { copyBtn.textContent = copyLabel; }, 1800);
       };
       if (navigator.clipboard) {
         navigator.clipboard.writeText(text).then(done).catch(done);

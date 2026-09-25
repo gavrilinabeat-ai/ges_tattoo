@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const telegramUrl = 'https://t.me/+3pOXD0ohuZs4Nzky';
+
+const days = [
+  {
+    n: 'DAY 1',
+    title: 'Where it all begins',
+    desc: "We'll break down why \"it won't work out\" is just fear talking, not a verdict. And what actually kicks off an artist's journey. How much artists earn, what you need to get started.",
+  },
+  {
+    n: 'DAY 2',
+    title: "The basics you can't skip before practicing",
+    desc: 'Safety and sterility, allergies.',
+  },
+  {
+    n: 'DAY 3',
+    title: 'Your first sketch',
+    desc: "We'll work from a real client brief.",
+  },
+  {
+    n: 'DAY 4',
+    title: 'Your first line',
+    desc: "We get your hand position right. You learn to hold the machine so it actually listens to you. This is where you try it yourself for the first time — and see that you've got what it takes. You'll work with a tattoo machine or a pencil.",
+  },
+  {
+    n: 'DAY 5',
+    title: 'How to actually earn from this',
+    desc: 'The most important day. Where to find your first clients, how to build your page, where to start so people notice you. You walk away with a clear plan, not the question "now what". Plus a €150 stipend.',
+  },
+];
+
+const forWhom = [
+  "You keep falling asleep thinking about tattooing — but \"what if it doesn't work out\" always stops you",
+  "You've already tried tattooing, but you're doing it blind, without a system or confidence",
+  'You\'re tired of working for someone else and want a profession where you set your own schedule',
+  "You live abroad and you're looking for work that can support you",
+  "You're already an artist — beauty or PMU — and want to add tattooing to that",
+];
+
+const stories = [
+  { name: 'Viktoria', img: '/images/students/viktoria.jpeg', text: "Used to serve in the police, couldn't draw, and approached anything new with fear. Now she's mastered every technique, opened her own studio, and works for herself." },
+  { name: 'Yulia, Belgium', img: '/images/students/yulia.jpeg', text: "Dreamed about tattooing since childhood. Finished the course in a month and a half and got hired at a studio in Belgium." },
+  { name: 'Lida', img: '/images/students/lida.jpeg', text: 'A mother of three who had carried this dream since 2014. Trained online, moved to Germany, and now tattoos there.' },
+];
+
+const howItWorks = [
+  'You hit the button — and you\'re instantly in my Telegram channel',
+  'Day one of the course is already waiting there, with a start date',
+  'You go at your own pace for five days and take your first steps',
+  'By the end you\'ll know if it\'s for you — and how to move forward',
+];
+
+const faq = [
+  ['Is this actually free?', "Yes, completely. These 5 days are my gift to you, so you can try it before deciding anything."],
+  ["What if I'm a complete beginner?", "Then this is exactly for you. We start from the simplest step and build up — you don't need to know anything beforehand."],
+  ['Do I need my own machine?', "No. To go through these 5 days, watching and absorbing is enough. And if you already have a machine — great, you can try it hands-on right away."],
+  ['What happens after the 5 days?', "You'll know whether you truly want to pursue this profession. And if you do, I'll tell you about the full course."],
+];
+---
+<BaseLayout
+  title="I'll teach you to tattoo in 5 days, for free | Sacred Ink Academy"
+  description="A free 5-day test drive of the tattoo artist profession with Kateryna Yeromenko: from your first line to understanding how this profession really works. Starts in Telegram."
+  path="/en/free-tattoo-course/"
+  lang="en"
+>
+  <section class="section page-hero" style="position:relative; overflow:hidden; padding-top:clamp(48px,8vw,96px); padding-bottom:clamp(48px,8vw,96px);">
+    <div style="position:absolute; inset:0; background:url('/images/decor/free-course-hero-bg.jpg') center/cover no-repeat;"></div>
+    <div style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(15,3,2,0.82) 0%, rgba(15,3,2,0.6) 45%, rgba(15,3,2,0.28) 100%);"></div>
+    <div class="container" style="position:relative; z-index:1;">
+      <nav class="breadcrumbs" style="color:var(--paper); opacity:0.7;"><a href="/en/" style="color:var(--paper);">Home</a><span>/</span><span>5-day free course</span></nav>
+      <span class="eyebrow" style="color:var(--paper); opacity:0.8;">Free · 5 days</span>
+      <h1 style="margin-top:16px; color:var(--paper); max-width:18ch;">I'll teach you to tattoo in 5 days. For free.</h1>
+      <p class="hero-sub" style="color:var(--paper); opacity:0.85;">From your first line to understanding how this profession actually works. Even if you've never held a machine before.</p>
+      <p class="hero-sub" style="margin-top:10px; color:var(--paper); opacity:0.85;">Five days. Not theory for theory's sake — things you actually do with your own hands.</p>
+      <div class="hero-actions">
+        <a href={telegramUrl} class="btn btn-primary" target="_blank" rel="noopener">I want to learn → go to Telegram</a>
+      </div>
+      <p style="margin-top:24px; color:var(--paper); opacity:0.75; font-size:15px; max-width:56ch;">I'll be your guide — Kateryna Yeromenko. I've been tattooing for 7 years and training others. Over 100 of my students now work and live off this craft.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="section-index">[1]</span>
+      <h2 style="margin-top:12px;">Who this is for</h2>
+      <p class="content-block" style="margin-top:14px; opacity:0.75;">This is for you if you recognize yourself here:</p>
+      <div class="for-whom-grid" style="margin-top:28px;">
+        {forWhom.map((t) => (
+          <div class="fw-card"><span class="fw-num">🖤</span><span class="fw-text">{t}</span></div>
+        ))}
+      </div>
+      <p class="content-block" style="margin-top:24px; opacity:0.75;">It doesn't matter if you're starting from zero or already tried something. In these 5 days you'll honestly find out: is it for you or not. And what to do next.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="section-index">[2]</span>
+      <h2 style="margin-top:12px;">What happens in 5 days</h2>
+      <ul class="module-list" style="margin-top:28px;">
+        {days.map((d) => (
+          <li class="module-item"><span class="module-num">{d.n}</span><span class="module-title">{d.title}</span><span class="module-desc">{d.desc}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container two-col">
+      <img src="/images/kateryna/teacher-block.jpeg" alt="Kateryna Yeromenko" style="width:100%; height:100%; object-fit:cover; min-height:320px;">
+      <div>
+        <span class="section-index">[3]</span>
+        <h2 style="margin-top:12px;">Who's teaching you</h2>
+        <p class="content-block" style="margin-top:18px;">I'm Kateryna Yeromenko. I've been tattooing for 7 years, working in graphic style and microrealism, and training women in this profession.</p>
+        <p class="content-block" style="margin-top:14px;">I didn't start at an art school. I sat as a bank teller quietly hating every day, craving something creative. I bought my first machine, trained at home, practiced on models. Years later — I have my own studio, convention appearances, income from $5,000/month, and my own academy.</p>
+        <p class="content-block" style="margin-top:14px;">I walked this path myself — from "too scared to even start" to "I wake up and love what I do." So I'll walk you through it too, step by step.</p>
+        <p class="content-block" style="margin-top:14px; font-weight:600;">100+ graduates. My students work across Ukraine, Germany, Belgium. One earned the equivalent of over $1,300 just a month after finishing.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="section-index">[4]</span>
+      <h2 style="margin-top:12px;">Stories from my students</h2>
+      <div class="case-list" style="gap:16px; margin-top:28px;">
+        {stories.map((s) => (
+          <article class="case-card" style="max-width:640px;">
+            <img src={s.img} alt={`Student work — ${s.name}`} style="width:100%; height:100%; min-height:130px; max-height:150px; object-fit:cover;">
+            <div class="case-body" style="padding:18px 22px; gap:8px;">
+              <span class="case-meta">Sacred Ink student</span>
+              <h3 style="font-size:18px;">{s.name}</h3>
+              <p style="opacity:0.75; font-size:14px; line-height:1.5;">{s.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p style="margin-top:24px; opacity:0.6; font-size:14px;">These aren't all of them — I post more stories on my <a href="https://www.instagram.com/katia_yeromenko/" target="_blank" rel="noopener" style="text-decoration:underline;">Instagram</a>.</p>
+    </div>
+  </section>
+
+  <section class="section section-black" id="how-it-works">
+    <div class="container">
+      <span class="section-index" style="opacity:0.5;">[5]</span>
+      <h2 style="margin-top:12px;">How it works</h2>
+      <ol style="margin-top:28px; display:flex; flex-direction:column; gap:16px; max-width:56ch; padding-left:22px;">
+        {howItWorks.map((step) => (
+          <li style="font-size:16px; opacity:0.85; line-height:1.5;">{step}</li>
+        ))}
+      </ol>
+      <p style="margin-top:24px; opacity:0.7; max-width:56ch;">One click and you're already learning. No forms, no waiting. Free.</p>
+      <a href={telegramUrl} class="btn btn-inverse" style="margin-top:28px;" target="_blank" rel="noopener">Start learning on Telegram →</a>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="faq">
+    <div class="container">
+      <span class="section-index">[6]</span>
+      <h2 style="margin-top:12px;">Frequently asked questions</h2>
+      <div class="faq-list" style="margin-top:32px;">
+        {faq.map(([q, a]) => (
+          <div class="faq-item">
+            <button class="faq-q"><span>{q}</span><span class="plus"></span></button>
+            <div class="faq-a"><div class="faq-a-inner">{a}</div></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section final-cta">
+    <div class="container">
+      <span class="eyebrow">Sacred Ink Academy</span>
+      <h2 style="margin-top:16px;">Start for free today</h2>
+      <a href={telegramUrl} class="btn btn-primary" target="_blank" rel="noopener">Start learning on Telegram →</a>
+    </div>
+  </section>
+</BaseLayout>

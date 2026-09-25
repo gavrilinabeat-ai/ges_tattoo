@@ -1,63 +1,120 @@
+---
+export interface Props {
+  lang?: 'uk' | 'en';
+}
+const { lang = 'uk' } = Astro.props;
+const p = lang === 'en' ? '/en' : '/ua';
+
+const t = lang === 'en'
+  ? {
+      close: 'Close',
+      gift: 'A gift for you',
+      revealHeadline: 'Unlock your discount',
+      unlocked: 'Discount unlocked',
+      drag: 'Drag to unlock',
+      openGift: 'Open the gift',
+      emailHeadline: 'Discount on Sacred Ink Academy',
+      emailLead: "Leave your email and we'll send you a personal 10% promo code.",
+      emailLabel: 'Your email',
+      emailPlaceholder: 'Your email',
+      emailError: 'Please check your email address',
+      getCode: 'Get promo code →',
+      consent: 'No spam. Just the promo code and useful Sacred Ink materials. By submitting your email you agree to the',
+      privacy: 'Privacy Policy',
+      readyHeadline: 'Your promo code is ready',
+      readyLead: 'A 10% discount on Sacred Ink Academy training',
+      copy: 'Copy',
+      copied: 'Copied ✓',
+      sentNote: "We've also sent the promo code to your email.",
+      goToProgram: 'Go to the program →',
+      tryFree: 'Try 5 days for free',
+      fabAria: 'Open 10% discount',
+    }
+  : {
+      close: 'Закрити',
+      gift: 'Подарунок для тебе',
+      revealHeadline: 'Відкрий свою знижку на навчання',
+      unlocked: 'Знижка розблокована',
+      drag: 'Проведи, щоб відкрити',
+      openGift: 'Відкрити подарунок',
+      emailHeadline: 'Знижка на навчання Sacred Ink Academy',
+      emailLead: 'Залиш свою пошту — і ми надішлемо тобі персональний промокод на знижку 10%.',
+      emailLabel: 'Твоя пошта',
+      emailPlaceholder: 'Твоя пошта',
+      emailError: 'Перевір, будь ласка, адресу пошти',
+      getCode: 'Отримати промокод →',
+      consent: 'Без спаму. Лише промокод та корисні матеріали Sacred Ink. Надсилаючи email, ти погоджуєшся з',
+      privacy: 'Privacy Policy',
+      readyHeadline: 'Твій промокод готовий',
+      readyLead: 'Знижка 10% на навчання Sacred Ink Academy',
+      copy: 'Скопіювати',
+      copied: 'Скопійовано ✓',
+      sentNote: 'Ми також надіслали промокод на твою пошту.',
+      goToProgram: 'Перейти до навчання →',
+      tryFree: 'Спробувати 5 днів безкоштовно',
+      fabAria: 'Відкрити знижку 10%',
+    };
+---
 <div class="overlay" id="discountOverlay">
   <div class="discount-modal" role="dialog" aria-modal="true" aria-labelledby="discountTitle">
-    <button class="modal-close" id="discountClose" aria-label="Закрити">
+    <button class="modal-close" id="discountClose" aria-label={t.close}>
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.4"/></svg>
     </button>
 
     <div class="modal-step is-active" data-step="reveal">
       <div class="modal-brand"><img src="/assets/logo/wordmark-black.svg" alt="Sacred Ink Academy"></div>
-      <p class="modal-kicker">Подарунок для тебе</p>
+      <p class="modal-kicker">{t.gift}</p>
       <h2 id="discountTitle" class="modal-percent">−10%</h2>
-      <p class="modal-headline">Відкрий свою знижку на навчання</p>
+      <p class="modal-headline">{t.revealHeadline}</p>
 
       <div class="reveal-card" id="revealCard">
         <div class="reveal-card-base">
           <span class="rc-amount">−10%</span>
-          <span class="rc-caption">Знижка розблокована</span>
+          <span class="rc-caption">{t.unlocked}</span>
         </div>
         <div class="reveal-card-cover" id="revealCover">
           <svg viewBox="0 0 24 24" fill="none"><path d="M3 12h18M15 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span>Проведи, щоб відкрити</span>
+          <span>{t.drag}</span>
         </div>
       </div>
-      <button class="reveal-fallback" id="revealFallback">Відкрити подарунок</button>
+      <button class="reveal-fallback" id="revealFallback">{t.openGift}</button>
     </div>
 
     <div class="modal-step" data-step="email">
       <div class="modal-brand"><img src="/assets/logo/wordmark-black.svg" alt="Sacred Ink Academy"></div>
-      <p class="modal-kicker">Подарунок для тебе</p>
+      <p class="modal-kicker">{t.gift}</p>
       <h2 class="modal-percent">−10%</h2>
-      <p class="modal-headline">Знижка на навчання Sacred Ink Academy</p>
-      <p class="modal-lead">Залиш свою пошту — і ми надішлемо тобі персональний промокод на знижку 10%.</p>
+      <p class="modal-headline">{t.emailHeadline}</p>
+      <p class="modal-lead">{t.emailLead}</p>
 
-      <form class="email-form" id="discountForm" novalidate>
-        <label for="discountEmail" class="visually-hidden">Твоя пошта</label>
-        <input type="email" id="discountEmail" class="email-field" placeholder="Твоя пошта" autocomplete="email" required>
-        <span class="email-error" id="discountEmailError">Перевір, будь ласка, адресу пошти</span>
-        <button type="submit" class="btn btn-primary">Отримати промокод →</button>
+      <form class="email-form" id="discountForm" novalidate data-lang={lang}>
+        <label for="discountEmail" class="visually-hidden">{t.emailLabel}</label>
+        <input type="email" id="discountEmail" class="email-field" placeholder={t.emailPlaceholder} autocomplete="email" required>
+        <span class="email-error" id="discountEmailError">{t.emailError}</span>
+        <button type="submit" class="btn btn-primary">{t.getCode}</button>
       </form>
-      <p class="email-consent">Без спаму. Лише промокод та корисні матеріали Sacred Ink. Надсилаючи email, ти погоджуєшся з <a href="/ua/privacy/" style="text-decoration:underline;">Privacy Policy</a>.</p>
+      <p class="email-consent">{t.consent} <a href={`${p}/privacy/`} style="text-decoration:underline;">{t.privacy}</a>.</p>
     </div>
 
     <div class="modal-step" data-step="success">
       <div class="success-icon">
         <svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <h2 class="modal-headline" style="font-size:20px;">Твій промокод готовий</h2>
-      <p class="modal-lead">Знижка 10% на навчання Sacred Ink Academy</p>
+      <h2 class="modal-headline" style="font-size:20px;">{t.readyHeadline}</h2>
+      <p class="modal-lead">{t.readyLead}</p>
 
       <div class="promo-field">
         <span class="promo-code" id="promoCode">SACREDINK10</span>
-        <button class="promo-copy" id="promoCopyBtn" type="button">Скопіювати</button>
+        <button class="promo-copy" id="promoCopyBtn" type="button" data-copy-label={t.copy} data-copied-label={t.copied}>{t.copy}</button>
       </div>
-      <p class="promo-note">Ми також надіслали промокод на твою пошту.</p>
+      <p class="promo-note">{t.sentNote}</p>
 
       <div class="success-actions">
-        <a href="/ua/tattoo-course/" class="btn btn-primary">Перейти до навчання →</a>
-        <a href="/ua/free-tattoo-course/" class="btn btn-ghost">Спробувати 5 днів безкоштовно</a>
+        <a href={`${p}/tattoo-course/`} class="btn btn-primary">{t.goToProgram}</a>
+        <a href={`${p}/free-tattoo-course/`} class="btn btn-ghost">{t.tryFree}</a>
       </div>
     </div>
   </div>
 </div>
 
-<button class="discount-fab" id="discountFab" aria-label="Відкрити знижку 10%">−10%</button>
+<button class="discount-fab" id="discountFab" aria-label={t.fabAria}>−10%</button>

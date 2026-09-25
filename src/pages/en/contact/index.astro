@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Contact — Sacred Ink Academy"
+  description="Get in touch with Sacred Ink Academy: questions about training, social media, contact form."
+  path="/en/contact/"
+  lang="en"
+>
+  <section class="section page-hero">
+    <div class="container">
+      <nav class="breadcrumbs"><a href="/en/">Home</a><span>/</span><span>Contact</span></nav>
+      <span class="eyebrow">Contact</span>
+      <h1 style="margin-top:16px;">Contact</h1>
+      <p class="hero-sub">Questions about the program, format, or price — write to us and we'll get back to you as soon as possible.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container two-col">
+      <div>
+        <h2 style="font-size:20px;">Application form</h2>
+        <form class="contact-form" style="margin-top:20px;" id="contactForm">
+          <input type="hidden" name="lang" value="en">
+          <div class="form-field"><label for="c-name">Full name</label><input type="text" id="c-name" name="name" required></div>
+          <div class="form-field"><label for="c-tg">Telegram handle</label><input type="text" id="c-tg" name="telegram" placeholder="@nickname" required></div>
+          <div class="form-field"><label for="c-ig">Instagram handle</label><input type="text" id="c-ig" name="instagram" placeholder="@nickname" required></div>
+          <div class="form-field">
+            <label>Do you have any tattooing experience?</label>
+            <div style="display:flex; gap:20px; margin-top:4px;">
+              <label style="display:flex; align-items:center; gap:8px; font-size:15px; text-transform:none; font-weight:400; opacity:1;"><input type="radio" name="experience" value="Yes" required style="width:16px; height:16px;"> Yes</label>
+              <label style="display:flex; align-items:center; gap:8px; font-size:15px; text-transform:none; font-weight:400; opacity:1;"><input type="radio" name="experience" value="No" required style="width:16px; height:16px;"> No</label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="justify-content:center;">Send</button>
+        </form>
+        <p id="contactFormNote" style="display:none; margin-top:16px; font-size:14px; padding:14px 18px; border:1px solid rgba(15,3,2,.16);"></p>
+      </div>
+
+      <div class="contact-info">
+        <div class="contact-info-item">
+          <span class="contact-info-label">Email</span>
+          <span class="contact-info-value"><a href="mailto:gavrilinabeat@gmail.com">gavrilinabeat@gmail.com</a></span>
+        </div>
+        <div class="contact-info-item">
+          <span class="contact-info-label">Telegram</span>
+          <span class="contact-info-value"><a href="https://t.me/ges_tattoo" target="_blank" rel="noopener">@ges_tattoo</a></span>
+        </div>
+        <div class="contact-info-item">
+          <span class="contact-info-label">Instagram</span>
+          <span class="contact-info-value"><a href="https://www.instagram.com/sacred.ink_academy/" target="_blank" rel="noopener">@sacred.ink_academy</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('contactForm')?.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const note = document.getElementById('contactFormNote');
+      const data = Object.fromEntries(new FormData(form));
+
+      if (submitBtn) submitBtn.disabled = true;
+      if (note) note.style.display = 'none';
+
+      try {
+        const res = await fetch('/api/contact/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) throw new Error('request failed');
+        if (note) {
+          note.textContent = "Thanks for your application! We'll get back to you shortly.";
+          note.style.borderColor = 'rgba(30,120,60,.4)';
+          note.style.display = 'block';
+        }
+        form.reset();
+      } catch (err) {
+        if (note) {
+          note.textContent = 'Something went wrong sending your application. Please try again shortly, or message us directly on Telegram/Instagram.';
+          note.style.borderColor = 'rgba(180,40,30,.4)';
+          note.style.display = 'block';
+        }
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+      }
+    });
+  </script>
+</BaseLayout>

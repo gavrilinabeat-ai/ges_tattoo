@@ -25,6 +25,7 @@ export async function POST({ request }) {
   const telegram = String(data.telegram ?? '').trim();
   const instagram = String(data.instagram ?? '').trim();
   const experience = String(data.experience ?? '').trim();
+  const lang = data.lang === 'en' ? 'en' : 'ua';
 
   if (!name || !telegram || !instagram || !experience) {
     return new Response(JSON.stringify({ ok: false, error: 'Missing required fields.' }), {
@@ -33,13 +34,21 @@ export async function POST({ request }) {
     });
   }
 
-  const text = [
-    '📩 Нова заявка на навчання — Sacred Ink Academy',
-    `Ім'я та прізвище: ${name}`,
-    `Telegram: ${telegram}`,
-    `Instagram: ${instagram}`,
-    `Досвід у тату: ${experience}`,
-  ].join('\n');
+  const text = lang === 'en'
+    ? [
+        '📩 New training application — Sacred Ink Academy (🇬🇧 EN site)',
+        `Name: ${name}`,
+        `Telegram: ${telegram}`,
+        `Instagram: ${instagram}`,
+        `Tattoo experience: ${experience}`,
+      ].join('\n')
+    : [
+        '📩 Нова заявка на навчання — Sacred Ink Academy',
+        `Ім'я та прізвище: ${name}`,
+        `Telegram: ${telegram}`,
+        `Instagram: ${instagram}`,
+        `Досвід у тату: ${experience}`,
+      ].join('\n');
 
   const tgRes = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
     method: 'POST',

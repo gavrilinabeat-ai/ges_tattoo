@@ -6,24 +6,29 @@ export interface Props {
   videos?: { src: string; name: string }[];
   heading?: string;
   index?: string;
+  lang?: 'uk' | 'en';
 }
-const { images = [], videos = [], heading = 'Відгуки', index } = Astro.props;
+const { images = [], videos = [], heading, index, lang = 'uk' } = Astro.props;
+const t = lang === 'en'
+  ? { heading: 'Reviews', prevReviews: 'Previous reviews', nextReviews: 'Next reviews', enlarge: 'Enlarge review', videoReviews: 'Video reviews', prevVideos: 'Previous videos', nextVideos: 'Next videos' }
+  : { heading: 'Відгуки', prevReviews: 'Попередні відгуки', nextReviews: 'Наступні відгуки', enlarge: 'Збільшити відгук', videoReviews: 'Відеовідгуки', prevVideos: 'Попередні відео', nextVideos: 'Наступні відео' };
+const finalHeading = heading ?? t.heading;
 ---
 {images.length > 0 && (
   <div class="reviews-block">
     <div class="works-head">
       <div>
         {index && <span class="section-index">{index}</span>}
-        <h2 style="margin-top:12px;">{heading}</h2>
+        <h2 style="margin-top:12px;">{finalHeading}</h2>
       </div>
       <div class="works-nav" data-scroller-nav>
-        <button type="button" data-works-prev aria-label="Попередні відгуки">←</button>
-        <button type="button" data-works-next aria-label="Наступні відгуки">→</button>
+        <button type="button" data-works-prev aria-label={t.prevReviews}>←</button>
+        <button type="button" data-works-next aria-label={t.nextReviews}>→</button>
       </div>
     </div>
     <div class="works-scroller reviews-scroller">
       {images.map((img) => (
-        <button type="button" class="review-shot" data-lightbox-src={img.src} aria-label="Збільшити відгук">
+        <button type="button" class="review-shot" data-lightbox-src={img.src} aria-label={t.enlarge}>
           <img src={img.src} alt={img.alt} loading="lazy">
         </button>
       ))}
@@ -34,10 +39,10 @@ const { images = [], videos = [], heading = 'Відгуки', index } = Astro.pr
 {videos.length > 0 && (
   <div class="reviews-block" style="margin-top:40px;">
     <div class="works-head">
-      <div><span class="eyebrow">Відеовідгуки</span></div>
+      <div><span class="eyebrow">{t.videoReviews}</span></div>
       <div class="works-nav" data-scroller-nav>
-        <button type="button" data-works-prev aria-label="Попередні відео">←</button>
-        <button type="button" data-works-next aria-label="Наступні відео">→</button>
+        <button type="button" data-works-prev aria-label={t.prevVideos}>←</button>
+        <button type="button" data-works-next aria-label={t.nextVideos}>→</button>
       </div>
     </div>
     <div class="works-scroller reviews-scroller">

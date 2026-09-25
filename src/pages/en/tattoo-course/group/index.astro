@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: 'Group Training — Tattoo Master from Scratch',
+  description: 'The "Group" plan: training with a mentor and Kateryna, daily feedback, and a guarantee of 3 paying clients during the course.',
+  provider: { '@type': 'EducationalOrganization', name: 'Sacred Ink Academy', sameAs: 'https://sacredinkacademy.com/en/' },
+};
+
+const included = [
+  { icon: '👩‍🏫', title: 'A mentor + Kateryna', text: 'a mentor and I personally guide you, keeping track of every step toward the result.' },
+  { icon: '💻', title: 'Zoom sessions every two weeks', text: 'live meetings, review of your work and technique, personal tasks and direction.' },
+  { icon: '✅', title: 'Daily homework review', text: 'your work gets reviewed and feedback every day. You never get stuck or guess.' },
+  { icon: '📦', title: 'A starter kit of materials, included', text: 'everything you need to start practicing is already included.' },
+  { icon: '🎯', title: '3 paying clients guaranteed during training', text: "you're not just learning — you're already earning, while you're still in the course." },
+  { icon: '🖤', title: "A tattoo artists' club after training", text: 'a community for growth, support, and being surrounded by people just like you.' },
+];
+
+const format = [
+  'Access to all practical modules (1–10) on a dedicated platform',
+  'A Notion ecosystem with materials',
+  'A group chat for your cohort',
+  'A personal dashboard for your assignments',
+  '3 months of access to materials after the course ends',
+  'In-person practice in Kharkiv + the "Moving to real clients" module',
+];
+
+const modules = [
+  { n: '0', title: 'Introduction & organization', topics: 'Analyzing your starting point · building a growth strategy · how to move through the course and pick your pace · setting sales and scaling goals · financial thinking, breaking down your goal' },
+  { n: '1', title: 'Client and artist safety', topics: 'Where the work begins · sterility & disinfection · stages of sterilization · chemical solution · contraindications, working on scars · tattoo allergies · emergencies · aftercare' },
+  { n: '2', title: 'Preparing for a session', topics: 'Materials for the work · what machines exist · tattoo styles · sketch development · setting up your workspace · manual & machine transfer · printer overview · large transfers' },
+  { n: '3', title: 'Intro to practice. Outlining', topics: 'Hand position, motor skills · classic outline · whip outline · dynamic outline · lettering' },
+  { n: '4', title: 'Dotwork technique', topics: 'What dotwork is · dotwork practice' },
+  { n: '5', title: 'Whip shading', topics: 'Intro · practice · spraying technique' },
+  { n: '6', title: 'Magnums. Shading / coloring', topics: 'Coloring exercises · coloring practice · shading practice · portrait realism · fur realism · bonus: greywash and silvers, proportions' },
+  { n: '7', title: 'Color. Watercolor / coloring', topics: 'How to work with color · mixing inks · color practice · watercolor practice' },
+  { n: '8', title: 'Microrealism', topics: 'Black & grey microrealism · color microrealism' },
+  { n: '9', title: 'Content', topics: 'Pricing · building and filling your Instagram page · multi-channel presence · free promotion methods · a channel of content ideas' },
+  { n: '10', title: 'Traffic & promotion', topics: 'The "Boost" button vs Ads Manager · running ads through "Boost" · Business Manager and ad account · setting up a Business Manager on Facebook · picking an audience for any niche · running ads for traffic and engagement · analyzing and improving results · rules for a winning ad creative · reviewing other people\'s creatives' },
+];
+
+const path = [
+  'You analyze your starting point — understand what you were doing wrong and what to focus on',
+  'You work on your mindset, learn to stay focused during training',
+  'You go through all the theory and every nuance of the work',
+  'You learn to analyze and design sketches for a client',
+  'You get your hand position right with the machine and start practicing',
+  'You gradually lock in every technique',
+  'You set up your Instagram and get content ideas',
+  'You master targeting to find clients',
+  'You move on to more advanced work: color and microrealism',
+  'You find your first models and work on them',
+  'You get a strategy for where to go next',
+];
+---
+<BaseLayout
+  title="Group training — 'Group' plan | Sacred Ink Academy"
+  description="The 'Group' plan: training with a mentor and Kateryna, Zoom sessions, daily feedback, and a guarantee of 3 paying clients during the course."
+  path="/en/tattoo-course/group/"
+  ukPath="/ua/tattoo-course/grupove/"
+  lang="en"
+  jsonLd={jsonLd}
+>
+  <section class="section page-hero">
+    <div class="container">
+      <nav class="breadcrumbs"><a href="/en/">Home</a><span>/</span><a href="/en/tattoo-course/">Program</a><span>/</span><span>Group training</span></nav>
+      <span class="eyebrow">"Group" plan — with a mentor and Kateryna</span>
+      <h1 style="margin-top:16px;">Group training</h1>
+      <p class="hero-sub">For those who want to become an artist not alone, but guided — with support, feedback, and a guaranteed result.</p>
+      <p style="margin-top:12px; opacity:0.7; font-size:14px; font-weight:600;">Duration: 2 months</p>
+      <div class="hero-actions">
+        <a href="/en/contact/" class="btn btn-primary">I want to join the group</a>
+        <a href="/en/tattoo-course/" class="btn btn-ghost">← All training formats</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <span class="section-index">[1]</span>
+      <h2 style="margin-top:12px;">What's included</h2>
+      <div style="margin-top:28px; display:flex; flex-direction:column; gap:22px;">
+        {included.map((it) => (
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <span style="font-size:26px; line-height:1;">{it.icon}</span>
+            <div>
+              <div style="font-weight:700; font-size:15px;">{it.title}</div>
+              <p style="margin-top:4px; opacity:0.75; font-size:15px; line-height:1.55;">{it.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="section-index">[2]</span>
+      <h2 style="margin-top:12px;">Format</h2>
+      <ul style="margin-top:26px; padding-left:20px; display:flex; flex-direction:column; gap:10px; max-width:70ch;">
+        {format.map((f) => (
+          <li style="font-size:15px; opacity:0.85; line-height:1.5;">{f}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="program">
+    <div class="container">
+      <span class="section-index">[3]</span>
+      <h2 style="margin-top:12px;">Full program</h2>
+      <div style="margin-top:32px; display:flex; flex-direction:column; gap:28px;">
+        {modules.map((m) => (
+          <div style="border-top:1px solid rgba(15,3,2,.14); padding-top:20px;">
+            <div style="display:flex; align-items:baseline; gap:14px;">
+              <span style="font-size:13px; font-weight:800; opacity:0.4;">{m.n}</span>
+              <h3 style="margin:0; font-size:17px;">Module {m.n} — {m.title}</h3>
+            </div>
+            <p style="margin-top:10px; opacity:0.72; font-size:14px; line-height:1.6;">{m.topics}</p>
+          </div>
+        ))}
+      </div>
+      <p style="margin-top:24px; opacity:0.7; font-size:14px;">Also included: the "Moving to real clients" module, podcasts, and AI lessons.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="section-index">[4]</span>
+      <h2 style="margin-top:12px;">The path you'll take</h2>
+      <ol style="margin-top:28px; padding-left:20px; display:flex; flex-direction:column; gap:10px; max-width:70ch;">
+        {path.map((p) => (
+          <li style="font-size:15px; opacity:0.85; line-height:1.5;">{p}</li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section-black" id="result">
+    <div class="container">
+      <span class="section-index" style="opacity:0.5;">[5]</span>
+      <h2 style="margin-top:12px;">The result</h2>
+      <p style="margin-top:20px; max-width:70ch; opacity:0.85; font-size:16px; line-height:1.7;">In 2 months you go from your first line to your first paying clients: you master techniques, build hand control, set up your Instagram, learn to find clients — and come out not with a diploma, but with real work, your first income, and a community of artists behind you.</p>
+      <a href="/en/contact/" class="btn btn-inverse" style="margin-top:28px;">I want to join the group</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,31 +1,70 @@
 ---
+export interface Props {
+  lang?: 'uk' | 'en';
+}
+const { lang = 'uk' } = Astro.props;
 const year = new Date().getFullYear();
+const p = lang === 'en' ? '/en' : '/ua';
+
+const t = lang === 'en'
+  ? {
+      desc: 'Online tattoo school for those who want to master the tattoo artist profession from scratch — systematically, with support and real practice.',
+      aboutTitle: 'About',
+      about: 'About Sacred Ink Academy',
+      teacher: 'Kateryna Yeromenko',
+      results: 'Results & reviews',
+      programTitle: 'Program',
+      program: 'Tattoo Master from Scratch',
+      testDrive: '5-day test drive',
+      knowledge: 'Knowledge base',
+      socialTitle: 'Social',
+      rights: `© ${year} Sacred Ink Academy. All rights reserved.`,
+      privacy: 'Privacy Policy',
+      terms: 'Terms & Conditions',
+      cookies: 'Cookie Policy',
+    }
+  : {
+      desc: 'Онлайн-школа татуювання для тих, хто хоче опанувати професію tattoo artist з нуля — системно, з підтримкою та реальною практикою.',
+      aboutTitle: 'Про академію',
+      about: 'Про Sacred Ink Academy',
+      teacher: 'Катерина Єрьоменко',
+      results: 'Результати та відгуки',
+      programTitle: 'Навчання',
+      program: 'Тату Майстер з Нуля',
+      testDrive: '5-денний тест-драйв',
+      knowledge: 'База знань',
+      socialTitle: 'Соцмережі',
+      rights: `© ${year} Sacred Ink Academy. Усі права захищено.`,
+      privacy: 'Privacy Policy',
+      terms: 'Terms & Conditions',
+      cookies: 'Cookie Policy',
+    };
 ---
 <footer class="site-footer">
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
         <img src="/assets/logo/wordmark-white.svg" alt="Sacred Ink Academy">
-        <p class="footer-desc">Онлайн-школа татуювання для тих, хто хоче опанувати професію tattoo artist з нуля — системно, з підтримкою та реальною практикою.</p>
+        <p class="footer-desc">{t.desc}</p>
       </div>
       <div>
-        <div class="footer-col-title">Про академію</div>
+        <div class="footer-col-title">{t.aboutTitle}</div>
         <ul class="footer-links">
-          <li><a href="/ua/about/">Про Sacred Ink Academy</a></li>
-          <li><a href="/ua/kateryna-yeromenko/">Катерина Єрьоменко</a></li>
-          <li><a href="/ua/results/">Результати та відгуки</a></li>
+          <li><a href={`${p}/about/`}>{t.about}</a></li>
+          <li><a href={`${p}/kateryna-yeromenko/`}>{t.teacher}</a></li>
+          <li><a href={`${p}/results/`}>{t.results}</a></li>
         </ul>
       </div>
       <div>
-        <div class="footer-col-title">Навчання</div>
+        <div class="footer-col-title">{t.programTitle}</div>
         <ul class="footer-links">
-          <li><a href="/ua/tattoo-course/">Тату Майстер з Нуля</a></li>
-          <li><a href="/ua/free-tattoo-course/">5-денний тест-драйв</a></li>
-          <li><a href="/ua/knowledge/">База знань</a></li>
+          <li><a href={`${p}/tattoo-course/`}>{t.program}</a></li>
+          <li><a href={`${p}/free-tattoo-course/`}>{t.testDrive}</a></li>
+          <li><a href={`${p}/knowledge/`}>{t.knowledge}</a></li>
         </ul>
       </div>
       <div>
-        <div class="footer-col-title">Соцмережі</div>
+        <div class="footer-col-title">{t.socialTitle}</div>
         <ul class="footer-links">
           <li><a href="https://www.instagram.com/katia_yeromenko/" target="_blank" rel="noopener" data-social="instagram">Instagram</a></li>
           <li><a href="#" data-social="tiktok">TikTok</a></li>
@@ -35,11 +74,11 @@ const year = new Date().getFullYear();
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© {year} Sacred Ink Academy. Усі права захищено.</span>
+      <span>{t.rights}</span>
       <div class="footer-legal">
-        <a href="/ua/privacy/">Privacy Policy</a>
-        <a href="/ua/terms/">Terms &amp; Conditions</a>
-        <a href="/ua/privacy/#cookies">Cookie Policy</a>
+        <a href={`${p}/privacy/`}>{t.privacy}</a>
+        <a href={`${p}/terms/`}>{t.terms}</a>
+        <a href={`${p}/privacy/#cookies`}>{t.cookies}</a>
       </div>
     </div>
   </div>

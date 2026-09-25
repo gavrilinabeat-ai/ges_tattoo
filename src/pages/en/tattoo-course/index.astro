@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ReviewsGallery from '../../../components/ReviewsGallery.astro';
+import WorksGallery from '../../../components/WorksGallery.astro';
+import { videoReviews, imageReviews } from '../../../lib/reviews.js';
+import { works } from '../../../lib/works.js';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: 'Tattoo Master from Scratch',
+  description: 'Online tattoo course: 11 modules, 2 months, practice and homework review.',
+  provider: { '@type': 'EducationalOrganization', name: 'Sacred Ink Academy', sameAs: 'https://sacredinkacademy.com/en/' },
+};
+---
+<BaseLayout
+  title="'Tattoo Master from Scratch' course — online training | Sacred Ink Academy"
+  description="'Tattoo Master from Scratch' online course: 11 modules, 2 months, from the basics to your first clients. Practice, homework review, support from Sacred Ink Academy."
+  path="/en/tattoo-course/"
+  lang="en"
+  jsonLd={jsonLd}
+>
+  <section class="section" id="formats" style="padding-bottom:0;">
+    <div class="container">
+      <nav class="breadcrumbs"><a href="/en/">Home</a><span>/</span><a href="/en/">Program</a><span>/</span><span>Tattoo Master from Scratch</span></nav>
+      <span class="section-index">[1]</span>
+      <h1 style="margin-top:12px;">Training options</h1>
+      <p class="content-block" style="margin-top:14px; opacity:0.6; font-size:14px;">Pick a format — each page has the full program, what's included, and the price.</p>
+      <div class="format-grid">
+        <a href="/en/tattoo-course/base/" class="format-card" style="text-decoration:none; color:inherit; min-width:0;">
+          <span class="format-sticker">13 people bought this today</span>
+          <span class="format-name">Base</span>
+          <p style="font-size:13px; opacity:0.75; margin:0;">Master tattooing from scratch, at your own pace — on your own, but not in the dark: Kateryna reviews your work and corrects you, so you're not learning from your mistakes alone.</p>
+          <ul class="format-list">
+            <li>6 blocks: theory, prep, first practice, techniques, moving to real clients, Instagram & first clients</li>
+            <li>Written feedback on every piece, no calls required</li>
+            <li>3 months of access to the materials</li>
+          </ul>
+          <span class="btn btn-inverse">Learn more →</span>
+        </a>
+        <a href="/en/tattoo-course/group/" class="format-card is-silver" style="text-decoration:none; color:inherit; min-width:0;">
+          <span class="format-name">Group training</span>
+          <ul class="format-list">
+            <li>Everything in the Base format</li>
+            <li>Group reviews and live calls</li>
+            <li>Support from a like-minded community</li>
+          </ul>
+          <span class="btn btn-ghost">Learn more →</span>
+        </a>
+        <a href="/en/tattoo-course/upskilling/" class="format-card" style="text-decoration:none; color:inherit; min-width:0;">
+          <span class="format-name">Upskilling</span>
+          <ul class="format-list">
+            <li>For those already tattooing who want to close the gaps</li>
+            <li>Review of your own work</li>
+            <li>Advanced techniques</li>
+          </ul>
+          <span class="btn btn-ghost">Learn more →</span>
+        </a>
+        <a href="/en/tattoo-course/microrealism/" class="format-card" style="text-decoration:none; color:inherit; min-width:0;">
+          <span class="format-name">Microrealism</span>
+          <ul class="format-list">
+            <li>A specialization in microrealistic work</li>
+            <li>Working with detail and shading</li>
+            <li>A portfolio in the microrealism style</li>
+          </ul>
+          <span class="btn btn-ghost">Learn more →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="section-index">[2]</span>
+      <h2 style="margin-top:12px;">Student work</h2>
+      <div style="margin-top:28px;"><WorksGallery items={works} lang="en" /></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <ReviewsGallery heading="Reviews" index="[3]" images={imageReviews} videos={videoReviews} lang="en" />
+    </div>
+  </section>
+
+  <section class="section section-black final-cta">
+    <div class="container">
+      <span class="eyebrow" style="opacity:0.7;">Sacred Ink Academy</span>
+      <h2 style="margin-top:16px;">Get the full program and terms</h2>
+      <a href="/en/contact/" class="btn btn-inverse">Get the program and terms</a>
+    </div>
+  </section>
+</BaseLayout>

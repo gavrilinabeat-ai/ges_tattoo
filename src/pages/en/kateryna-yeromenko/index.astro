@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import WorksGallery from '../../../components/WorksGallery.astro';
+import { katerynaPortfolio } from '../../../lib/kateryna-portfolio.js';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Kateryna Yeromenko',
+  alternateName: 'Катерина Єрьоменко',
+  jobTitle: 'Tattoo artist & educator',
+  url: 'https://sacredinkacademy.com/en/kateryna-yeromenko/',
+  worksFor: { '@type': 'EducationalOrganization', name: 'Sacred Ink Academy' },
+};
+---
+<BaseLayout
+  title="Kateryna Yeromenko — tattoo artist & educator at Sacred Ink Academy"
+  description="Kateryna Yeromenko — tattoo artist & educator, 7+ years of experience, specializing in thin line, microrealism, black & grey. Founder of Sacred Ink Academy, 100+ graduates in 6 countries."
+  path="/en/kateryna-yeromenko/"
+  lang="en"
+  jsonLd={jsonLd}
+>
+  <section class="section page-hero">
+    <div class="container two-col">
+      <div>
+        <nav class="breadcrumbs"><a href="/en/">Home</a><span>/</span><a href="/en/about/">About</a><span>/</span><span>Kateryna Yeromenko</span></nav>
+        <span class="eyebrow">Tattoo artist & educator</span>
+        <h1 style="margin-top:16px;">Kateryna<br>Yeromenko</h1>
+        <div class="tag-row">
+          <span class="tag">Thin line</span>
+          <span class="tag">Microrealism</span>
+          <span class="tag">Black &amp; grey</span>
+        </div>
+        <div class="fact-strip">
+          <div><div class="stat-num" style="font-size:26px;">7+</div><div class="stat-label">years of experience</div></div>
+          <div><div class="stat-num" style="font-size:26px;">100+</div><div class="stat-label">graduates</div></div>
+          <div><div class="stat-num" style="font-size:26px;">6</div><div class="stat-label">countries</div></div>
+        </div>
+      </div>
+      <img src="/images/kateryna/portrait.jpeg" alt="Kateryna Yeromenko at work" style="width:100%; aspect-ratio:4/5; max-height:560px; object-fit:cover; align-self:start;">
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container content-block">
+      <h2 style="font-size:22px;">Professional path</h2>
+      <p>Kateryna is a tattoo artist with 7+ years of experience, specializing in thin line, microrealism, and black &amp; grey. She founded Sacred Ink Academy to pass on the system she built over years to anyone who wants to enter the profession deliberately — without the chaos of trial and error or random advice.</p>
+      <h2 style="font-size:22px;">Teaching method</h2>
+      <p>Training moves step by step from fundamentals to practice: skin anatomy and safety, working with equipment, technique on practice skin, styles and composition, and finally — working with your first clients. Every step comes with homework review and feedback.</p>
+      <h2 style="font-size:22px;">Teaching experience</h2>
+      <p>Over 100 graduates in 6 countries have completed training under Kateryna's method at Sacred Ink Academy.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="section-index">[2]</span>
+      <h2 style="margin-top:12px;">Portfolio</h2>
+      <div style="margin-top:28px;"><WorksGallery items={katerynaPortfolio} lang="en" /></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="section-index">[3]</span>
+      <h2 style="margin-top:12px;">Social media</h2>
+      <div class="tag-row" style="margin-top:18px;">
+        <a href="https://www.instagram.com/katia_yeromenko/" target="_blank" rel="noopener" class="tag" style="text-decoration:none;">Instagram</a>
+        <a href="#" class="tag" style="text-decoration:none;">TikTok</a>
+        <a href="#" class="tag" style="text-decoration:none;">YouTube</a>
+      </div>
+      <div class="stub-note" style="margin-top:14px;">TikTok / YouTube — to be added once real accounts exist.</div>
+    </div>
+  </section>
+
+  <section class="section section-black final-cta">
+    <div class="container">
+      <span class="eyebrow" style="opacity:0.7;">Sacred Ink Academy</span>
+      <h2 style="margin-top:16px;">Learn Kateryna's system</h2>
+      <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:32px;">
+        <a href="/en/tattoo-course/" class="btn btn-inverse">About the "Tattoo Master from Scratch" course</a>
+        <a href="/en/free-tattoo-course/" class="btn btn-ghost-inverse">Try it for free</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

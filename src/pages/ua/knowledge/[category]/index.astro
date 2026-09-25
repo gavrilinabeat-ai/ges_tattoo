@@ -18,6 +18,7 @@ const articles = await getArticles({ categorySlug: category.slug });
   title={`${category.title} — База знань Sacred Ink`}
   description={category.description || `Матеріали категорії ${category.title} від Sacred Ink Academy.`}
   path={`/ua/knowledge/${category.slug}/`}
+  enPath="/en/knowledge/"
   jsonLd={{
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',

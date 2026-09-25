@@ -1,54 +1,250 @@
 ---
-import '../../styles/tokens.css';
-import '../../styles/layout.css';
-import '../../styles/home.css';
-import '../../styles/pages.css';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ReviewsGallery from '../../components/ReviewsGallery.astro';
+import WorksGallery from '../../components/WorksGallery.astro';
+import { videoReviews, imageReviews } from '../../lib/reviews.js';
+import { works } from '../../lib/works.js';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationalOrganization',
+  name: 'Sacred Ink Academy',
+  url: 'https://sacredinkacademy.com/en/',
+  logo: 'https://sacredinkacademy.com/assets/logo/icon-black.svg',
+};
 ---
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sacred Ink Academy — online tattoo school</title>
-  <meta name="description" content="Sacred Ink Academy — online tattoo school. English content is on its way.">
-  <link rel="canonical" href="https://sacredinkacademy.com/en/">
-  <link rel="alternate" hreflang="uk" href="https://sacredinkacademy.com/ua/">
-  <link rel="alternate" hreflang="en" href="https://sacredinkacademy.com/en/">
-  <link rel="icon" href="/assets/logo/icon-black.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body>
-  <header class="site-header">
+<BaseLayout
+  title="Sacred Ink Academy — online tattoo school for beginners"
+  description="Sacred Ink Academy — online tattoo school. The 'Tattoo Master from Scratch' course: 11 modules, 2 months, from the basics to your first clients. 100+ graduates in 6 countries. Try 5 days for free."
+  path="/en/"
+  lang="en"
+  jsonLd={jsonLd}
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-kicker">
+          <span class="eyebrow">Tattoo education · for a new generation</span>
+        </div>
+        <h1>Online tattoo school<br>for those who want to master<br>the craft from scratch</h1>
+        <p class="hero-sub">Sacred Ink Academy takes you from your very first line to your first paying clients — systematically, with practice and support at every step.</p>
+        <div class="hero-actions">
+          <a href="/en/free-tattoo-course/" class="btn btn-primary">Try 5 days for free</a>
+          <a href="/en/tattoo-course/" class="btn btn-ghost">Learn about the program</a>
+        </div>
+        <div class="hero-proof">
+          <span class="hero-avatars">
+            <img src="/images/avatars/avatar-1.jpeg" alt="">
+            <img src="/images/avatars/avatar-2.jpeg" alt="">
+            <img src="/images/avatars/avatar-3.jpeg" alt="">
+          </span>
+          <span>100+ graduates have already changed their lives with Sacred Ink Academy</span>
+        </div>
+      </div>
+      <div class="hero-machine">
+        <video id="heroMachineVideo" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture preload="auto" aria-hidden="true" style="pointer-events:none; opacity:0; transition:opacity .35s ease;">
+          <source src="/videos/hero/tattoo-machine-v4.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <section class="stat-bar">
     <div class="container">
-      <a href="/en/" class="brand"><img src="/assets/logo/wordmark-black.svg" alt="Sacred Ink Academy"></a>
-      <div class="header-right">
-        <div class="lang-toggle">
-          <a href="/ua/">UA</a>
-          <span aria-hidden="true">/</span>
-          <a href="#" class="is-active">EN</a>
+      <div class="stat-row">
+        <div class="stat-item"><div class="stat-num">7+</div><div class="stat-label">years of experience</div></div>
+        <div class="stat-item"><div class="stat-num">100+</div><div class="stat-label">graduates</div></div>
+        <div class="stat-item"><div class="stat-num">6</div><div class="stat-label">countries</div></div>
+        <div class="stat-item"><div class="stat-num">11</div><div class="stat-label">modules</div></div>
+        <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">months of training</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section audience-stairs" id="for-whom">
+    <div class="audience-bg" style="background-image:url('/images/decor/process-bg.jpg')"></div>
+    <div class="audience-overlay"></div>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-index">[1]</span>
+          <h2 style="margin-top:12px;">Who Sacred Ink<br>is for</h2>
+        </div>
+        <a href="/en/results/" class="btn btn-ghost-inverse">See all the stories →</a>
+      </div>
+      <div class="stairs-list">
+        <div class="stair-item"><span class="plate-bg" aria-hidden="true"></span><span class="stair-num">01</span><span class="stair-text">You've never done a tattoo, but you've been dreaming about it for a while</span></div>
+        <div class="stair-item"><span class="plate-bg" aria-hidden="true"></span><span class="stair-num">02</span><span class="stair-text">You love drawing but don't know how to turn it into a profession</span></div>
+        <div class="stair-item"><span class="plate-bg" aria-hidden="true"></span><span class="stair-num">03</span><span class="stair-text">You want to change careers</span></div>
+        <div class="stair-item"><span class="plate-bg" aria-hidden="true"></span><span class="stair-num">04</span><span class="stair-text">You're already tattooing, but you're missing a real system</span></div>
+        <div class="stair-item"><span class="plate-bg" aria-hidden="true"></span><span class="stair-num">05</span><span class="stair-text">You want to start earning as a tattoo artist</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-black" id="path">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-index" style="opacity:0.5;">[2]</span>
+          <h2 style="margin-top:12px;">Your path from zero<br>to your first clients</h2>
+        </div>
+        <span class="eyebrow" style="opacity:0.7;">Support at every step</span>
+      </div>
+      <div class="path-scroller">
+        <div class="path-step"><div class="path-index">01</div><div class="path-label">Foundations</div></div>
+        <div class="path-step"><div class="path-index">02</div><div class="path-label">Equipment</div></div>
+        <div class="path-step"><div class="path-index">03</div><div class="path-label">Practice skin</div></div>
+        <div class="path-step"><div class="path-index">04</div><div class="path-label">Technique</div></div>
+        <div class="path-step"><div class="path-index">05</div><div class="path-label">Practice</div></div>
+        <div class="path-step"><div class="path-index">06</div><div class="path-label">Portfolio</div></div>
+        <div class="path-step"><div class="path-index">07</div><div class="path-label">First clients</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="program">
+    <div class="container">
+      <div class="program-grid">
+        <div>
+          <span class="section-index">[3]</span>
+          <h2 style="margin-top:12px;">The training<br>program</h2>
+          <p style="margin-top:20px; opacity:0.75; max-width:44ch;">11 structured modules that take you from your first lines to real clients.</p>
+          <ul class="program-list">
+            <li><b>01</b> Knowledge — theory & safety</li>
+            <li><b>02</b> Practice — practice skin & technique</li>
+            <li><b>03</b> Real results — portfolio & first clients</li>
+          </ul>
+          <div style="margin-top:28px; display:flex; gap:14px; flex-wrap:wrap;">
+            <a href="/en/tattoo-course/baza/#program" class="btn btn-primary">View the program →</a>
+          </div>
+        </div>
+        <img src="/images/works/program-block.jpeg" alt="Student work, thin line" class="program-visual" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="works">
+    <div class="container">
+      <div class="works-head">
+        <div>
+          <span class="section-index">[4]</span>
+          <h2 style="margin-top:12px;">Student work</h2>
+        </div>
+        <div style="display:flex; align-items:center; gap:20px;">
+          <a href="/en/results/" class="btn btn-ghost">See results →</a>
+          <div class="works-nav">
+            <button type="button" data-works-prev aria-label="Previous works">←</button>
+            <button type="button" data-works-next aria-label="Next works">→</button>
+          </div>
+        </div>
+      </div>
+      <WorksGallery items={works} lang="en" />
+    </div>
+  </section>
+
+  <section class="section section-warm" id="teacher">
+    <div class="container">
+      <span class="section-index">[5]</span>
+      <div class="teacher-card" style="margin-top:20px; background:var(--paper);">
+        <img src="/images/kateryna/teacher-block.jpeg" alt="Kateryna Yeromenko" class="teacher-photo" style="width:100%; height:100%; object-fit:cover;">
+        <div class="teacher-body">
+          <p class="teacher-quote">"I believe anyone can learn to make beautiful tattoos. What it takes is a system, practice, and the right support."</p>
+          <div>
+            <div class="teacher-name">Kateryna Yeromenko</div>
+            <div class="teacher-role">Tattoo artist & educator · 7+ years of experience · thin line, microrealism, black &amp; grey</div>
+          </div>
+          <div>
+            <a href="/en/kateryna-yeromenko/" class="btn btn-ghost">About Kateryna →</a>
+          </div>
         </div>
       </div>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section class="section page-hero" style="text-align:center;">
-      <div class="container">
-        <span class="eyebrow">English version</span>
-        <h1 style="margin-top:16px;">English content<br>is on its way</h1>
-        <p class="hero-sub" style="margin-left:auto; margin-right:auto;">We're building the English version of Sacred Ink Academy with content written for an international audience — not a machine translation. In the meantime, explore the Ukrainian site.</p>
-        <div class="hero-actions" style="justify-content:center; margin-top:32px;">
-          <a href="/ua/" class="btn btn-primary">Переглянути українську версію</a>
+  <section class="section" id="reviews">
+    <div class="container">
+      <ReviewsGallery heading="Student reviews" index="[6]" images={imageReviews} videos={videoReviews} lang="en" />
+      <div style="margin-top:16px; text-align:right;">
+        <a href="/en/results/" class="btn btn-ghost">All reviews →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-black" id="test-drive">
+    <div class="container testdrive">
+      <div>
+        <span class="section-index" style="opacity:0.5;">[7]</span>
+        <h2 style="margin-top:12px;">I'll teach you to tattoo in 5 days</h2>
+        <p style="margin-top:18px; opacity:0.75; max-width:42ch;">A free test drive of the tattoo artist profession from Sacred Ink Academy.</p>
+        <ul class="testdrive-checks">
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9.5l4 4 8-8" stroke="currentColor" stroke-width="1.6"/></svg> 5 hands-on lessons</li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9.5l4 4 8-8" stroke="currentColor" stroke-width="1.6"/></svg> Your first results on practice skin</li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9.5l4 4 8-8" stroke="currentColor" stroke-width="1.6"/></svg> Support from the team</li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9.5l4 4 8-8" stroke="currentColor" stroke-width="1.6"/></svg> Access right after you sign up</li>
+        </ul>
+        <a href="/en/free-tattoo-course/" class="btn btn-inverse" style="margin-top:30px;">Try it for free</a>
+      </div>
+      <img src="/images/decor/testdrive-visual.jpeg" alt="Tattoo sketch" class="testdrive-visual" style="width:100%; height:100%; object-fit:cover;">
+    </div>
+  </section>
+
+  <section class="section" id="knowledge">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-index">[8]</span>
+          <h2 style="margin-top:12px;">Sacred Ink<br>knowledge base</h2>
+        </div>
+        <a href="/en/knowledge/" class="btn btn-ghost">All articles →</a>
+      </div>
+      <div class="kb-grid">
+        <a class="kb-card" href="/en/knowledge/">
+          <span class="kb-cat">Starting out</span>
+          <span class="kb-title">How to become a tattoo artist from scratch</span>
+        </a>
+        <a class="kb-card" href="/en/knowledge/">
+          <span class="kb-cat">Equipment & materials</span>
+          <span class="kb-title">How to choose your first tattoo machine</span>
+        </a>
+        <a class="kb-card" href="/en/knowledge/">
+          <span class="kb-cat">Tattooing technique</span>
+          <span class="kb-title">How to learn to draw clean, even lines</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="faq">
+    <div class="container">
+      <span class="section-index">[9]</span>
+      <h2 style="margin-top:12px;">The most common questions</h2>
+      <div class="faq-list" style="margin-top:32px;">
+        <div class="faq-item">
+          <button class="faq-q"><span>Do I need any art experience to start?</span><span class="plus"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">No. The program is built to take you from zero — from basic lines to confident technique, step by step.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>How long does the training take?</span><span class="plus"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">The "Tattoo Master from Scratch" course runs for 2 months and consists of 11 modules with homework review.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>What's included in the free test drive?</span><span class="plus"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">5 days of hands-on lessons on practice skin with support from the team — so you can feel what the training is like before you decide.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>Is the training online?</span><span class="plus"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes, it's fully online — with practice, feedback, and support at every step.</div></div>
         </div>
       </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-bottom" style="border-top:none; padding-top:0;">
-      <span>© {new Date().getFullYear()} Sacred Ink Academy</span>
     </div>
-  </footer>
-</body>
-</html>
+  </section>
+
+  <section class="section final-cta" id="final-cta">
+    <div class="container">
+      <span class="eyebrow">Sacred Ink Academy</span>
+      <h2 style="margin-top:16px;">Start with 5 free days</h2>
+      <a href="/en/free-tattoo-course/" class="btn btn-primary">Start with 5 free days</a>
+    </div>
+  </section>
+</BaseLayout>

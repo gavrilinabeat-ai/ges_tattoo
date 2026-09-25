@@ -4,8 +4,8 @@ let client = null;
 
 function getClient() {
   if (client) return client;
-  const space = import.meta.env.CONTENTFUL_SPACE_ID;
-  const accessToken = import.meta.env.CONTENTFUL_DELIVERY_TOKEN;
+  const space = process.env.CONTENTFUL_SPACE_ID;
+  const accessToken = process.env.CONTENTFUL_DELIVERY_TOKEN;
   if (!space || !accessToken) {
     throw new Error(
       'Missing Contentful credentials. Copy .env.example to .env and fill in CONTENTFUL_SPACE_ID / CONTENTFUL_DELIVERY_TOKEN.'
