@@ -91,19 +91,21 @@ window.SIA_Popup = (function () {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
   }
 
-  /* Mock CRM/ESP submission. Replace with a real fetch() to your
-     email platform (e.g. Klaviyo, Mailchimp, custom backend). */
   function submitToCrm(email) {
     var payload = {
       email: email,
-      language: (form && form.dataset.lang) || 'ua',
+      lang: (form && form.dataset.lang) || 'ua',
       source_page: window.location.pathname,
       utm: Object.fromEntries(new URLSearchParams(window.location.search)),
-      created_at: new Date().toISOString(),
       campaign: CAMPAIGN
     };
-    console.info('[SIA] discount popup lead (mock submit):', payload);
-    return Promise.resolve({ promoCode: PROMO_CODE });
+    return fetch('/api/discount/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function () { return { promoCode: PROMO_CODE }; })
+      .catch(function () { return { promoCode: PROMO_CODE }; });
   }
 
   function initForm() {
