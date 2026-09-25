@@ -58,11 +58,22 @@ const faq = [
   ['Потрібна своя машинка?', 'Ні. Щоб пройти ці 5 днів, достатньо дивитись і вбирати. А якщо машинка вже є — чудово, одразу спробуєш на практиці.'],
   ['Що буде після 5 днів?', 'Ти зрозумієш, чи хочеш іти в цю професію по-справжньому. А хто захоче далі — тому розкажу про повний курс.'],
 ];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map(([q, a]) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+};
 ---
 <BaseLayout
   title="Навчу бити тату за 5 днів безкоштовно | Sacred Ink Academy"
   description="Безкоштовний 5-денний тест-драйв професії тату-майстра від Катерини Єрьоменко: від першої лінії до розуміння, як влаштована ця професія. Старт у телеграмі."
   path="/ua/free-tattoo-course/"
+  jsonLd={jsonLd}
 >
   <section class="section page-hero" style="position:relative; overflow:hidden; padding-top:clamp(48px,8vw,96px); padding-bottom:clamp(48px,8vw,96px);">
     <div style="position:absolute; inset:0; background:url('/images/decor/free-course-hero-bg.jpg') center/cover no-repeat;"></div>

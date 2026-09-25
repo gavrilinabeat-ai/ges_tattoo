@@ -1,0 +1,32 @@
+# Sacred Ink Academy
+
+> Sacred Ink Academy is an online tattoo school founded by tattoo artist and educator Kateryna Yeromenko. Its flagship course, "Tattoo Master from Scratch," teaches people to become professional tattoo artists from zero prior experience — covering theory, safety, technique, practice, and how to find real clients. 100+ graduates across 6 countries.
+
+Kateryna Yeromenko has 7+ years of tattooing experience, specializing in thin line, microrealism, and black & grey. She teaches an online, self-paced or group-guided curriculum with written feedback on every student's work.
+
+## Ukrainian site (primary language)
+
+- [Home](https://sacredinkacademy.com/ua/): overview of the school and course
+- [About](https://sacredinkacademy.com/ua/about/): philosophy and mission
+- [Kateryna Yeromenko](https://sacredinkacademy.com/ua/kateryna-yeromenko/): the founder's background and portfolio
+- [Tattoo Master from Scratch — training options](https://sacredinkacademy.com/ua/tattoo-course/): course formats overview
+- [Base format](https://sacredinkacademy.com/ua/tattoo-course/baza/): self-paced format, full program and pricing
+- [Group format](https://sacredinkacademy.com/ua/tattoo-course/grupove/): mentor-guided group format
+- [Free 5-day test drive](https://sacredinkacademy.com/ua/free-tattoo-course/): free introductory course via Telegram
+- [Student results & reviews](https://sacredinkacademy.com/ua/results/): case studies and testimonials
+- [Knowledge base](https://sacredinkacademy.com/ua/knowledge/): articles on tattoo technique, equipment, safety, and career
+- [Contact](https://sacredinkacademy.com/ua/contact/): application form and contact details
+
+## English site
+
+- [Home](https://sacredinkacademy.com/en/)
+- [About](https://sacredinkacademy.com/en/about/)
+- [Tattoo Master from Scratch — training options](https://sacredinkacademy.com/en/tattoo-course/)
+- [Base format](https://sacredinkacademy.com/en/tattoo-course/base/)
+- [Free 5-day test drive](https://sacredinkacademy.com/en/free-tattoo-course/)
+- [Contact](https://sacredinkacademy.com/en/contact/)
+
+## Notes
+
+- The Ukrainian site is the primary, most complete version. The English site covers the same core pages; its knowledge base is still being translated.
+- Full sitemap: https://sacredinkacademy.com/sitemap.xml

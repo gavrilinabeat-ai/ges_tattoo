@@ -5,13 +5,41 @@ import WorksGallery from '../../components/WorksGallery.astro';
 import { videoReviews, imageReviews } from '../../lib/reviews.js';
 import { works } from '../../lib/works.js';
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'EducationalOrganization',
-  name: 'Sacred Ink Academy',
-  url: 'https://sacredinkacademy.com/en/',
-  logo: 'https://sacredinkacademy.com/assets/logo/icon-black.svg',
-};
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    name: 'Sacred Ink Academy',
+    url: 'https://sacredinkacademy.com/en/',
+    logo: 'https://sacredinkacademy.com/assets/logo/icon-black.svg',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Do I need any art experience to start?',
+        acceptedAnswer: { '@type': 'Answer', text: 'No. The program is built to take you from zero — from basic lines to confident technique, step by step.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'How long does the training take?',
+        acceptedAnswer: { '@type': 'Answer', text: 'The "Tattoo Master from Scratch" course runs for 2 months and consists of 11 modules with homework review.' },
+      },
+      {
+        '@type': 'Question',
+        name: "What's included in the free test drive?",
+        acceptedAnswer: { '@type': 'Answer', text: '5 days of hands-on lessons on practice skin with support from the team — so you can feel what the training is like before you decide.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Is the training online?',
+        acceptedAnswer: { '@type': 'Answer', text: "Yes, it's fully online — with practice, feedback, and support at every step." },
+      },
+    ],
+  },
+];
 ---
 <BaseLayout
   title="Sacred Ink Academy — online tattoo school for beginners"

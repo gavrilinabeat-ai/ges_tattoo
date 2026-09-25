@@ -109,6 +109,16 @@ const faq = [
   ['When do I get access?', 'Right after payment.'],
   ['What if I can\'t finish my homework within 2 months?', 'Access to the materials stays open for 3 months — you can keep watching and learning, but I give feedback on your work during the first 2 months.'],
 ];
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map(([q, a]) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+};
 ---
 <BaseLayout
   title="Base — tattoo training format | Sacred Ink Academy"
@@ -116,7 +126,7 @@ const faq = [
   path="/en/tattoo-course/base/"
   ukPath="/ua/tattoo-course/baza/"
   lang="en"
-  jsonLd={jsonLd}
+  jsonLd={[jsonLd, faqJsonLd]}
 >
   <section class="section page-hero">
     <div class="container">

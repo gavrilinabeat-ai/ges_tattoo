@@ -58,10 +58,21 @@ const faq = [
   ['Do I need my own machine?', "No. To go through these 5 days, watching and absorbing is enough. And if you already have a machine — great, you can try it hands-on right away."],
   ['What happens after the 5 days?', "You'll know whether you truly want to pursue this profession. And if you do, I'll tell you about the full course."],
 ];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map(([q, a]) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+};
 ---
 <BaseLayout
   title="I'll teach you to tattoo in 5 days, for free | Sacred Ink Academy"
   description="A free 5-day test drive of the tattoo artist profession with Kateryna Yeromenko: from your first line to understanding how this profession really works. Starts in Telegram."
+  jsonLd={jsonLd}
   path="/en/free-tattoo-course/"
   lang="en"
 >

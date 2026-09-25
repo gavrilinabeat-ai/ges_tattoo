@@ -5,13 +5,41 @@ import WorksGallery from '../../components/WorksGallery.astro';
 import { videoReviews, imageReviews } from '../../lib/reviews.js';
 import { works } from '../../lib/works.js';
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'EducationalOrganization',
-  name: 'Sacred Ink Academy',
-  url: 'https://sacredinkacademy.com/ua/',
-  logo: 'https://sacredinkacademy.com/assets/logo/icon-black.svg',
-};
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    name: 'Sacred Ink Academy',
+    url: 'https://sacredinkacademy.com/ua/',
+    logo: 'https://sacredinkacademy.com/assets/logo/icon-black.svg',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Чи потрібен художній досвід, щоб почати?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Ні. Програма побудована так, щоб провести тебе з нуля — від базових ліній до впевненої техніки, крок за кроком.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Скільки триває навчання?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Курс «Тату Майстер з Нуля» триває 2 місяці та складається з 11 модулів з перевіркою домашніх завдань.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Що входить у безкоштовний тест-драйв?',
+        acceptedAnswer: { '@type': 'Answer', text: '5 днів практичних уроків на штучній шкірі з підтримкою команди — щоб ти відчула, як проходить навчання, перш ніж прийняти рішення.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Чи є навчання онлайн?',
+        acceptedAnswer: { '@type': 'Answer', text: "Так, формат повністю онлайн — з практикою, зворотним зв'язком і супроводом на кожному етапі." },
+      },
+    ],
+  },
+];
 ---
 <BaseLayout
   title="Sacred Ink Academy — онлайн-школа татуювання для тих, хто хоче опанувати професію з нуля"
