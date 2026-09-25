@@ -91,8 +91,10 @@
     video.removeAttribute('controls');
 
     // Keep the video invisible until it's actually animating, so nobody
-    // ever sees a frozen/paused first frame while it loads.
+    // ever sees a frozen/paused first frame — or Safari's native "tap to
+    // play" glyph, which ignores opacity — while it loads.
     video.addEventListener('playing', function () {
+      video.style.visibility = 'visible';
       video.style.opacity = '1';
     });
 
